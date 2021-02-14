@@ -86,19 +86,26 @@ def companyDisplaySettings(companyName):
     resp = response
 
     if request.method == "POST":
-        settings = json.loads(request.data)["data"]
+        # recieve
+        try:
+            settings = json.loads(request.data)["data"]
+        except:
+            resp["message"] = "Invalid Input"
+            resp["success"] = False
+            return resp
         
+        # integrate
         try: 
             Validator.setModel(DisplaySetting)
-            isValid = Validator.validateDisplaySettings(settings)
+            isValid = Validator.validateModel(settings)
             if not isValid:
                 resp["success"] = False
                 resp["message"] = "Input Is Not Valid"
                 return resp
 
-            transformedSettings = Transformer.transformDisplaySettings(settings)
+            transformedSettings = Transformer.transformDisplaySettings(settings, DisplaySetting)
 
-            loadedSettings = Loader.loadDisplaySettings(transformedSettings, DisplaySetting)
+            loadedSettings = Loader.loadDisplaySettings(transformedSettings)
 
             resp["success"] = True
             resp["message"] = "Display Settings Loaded"
@@ -115,11 +122,19 @@ def companyDisplaySettings(companyName):
 
     elif request.method == "GET":
         
-        db = open(app.config["FRONTEND_CONFIGS"])
-        data = db.read()
-        db.close()
+        existingCompany = DisplaySetting.query.filter_by(company=companyName).first()
+        if existingCompany:
+            print("TRUE")
+            existingCompany = existingCompany.to_dict()
+            print(existingCompany)
 
-        resp["data"] = json.loads(data)
+        else:
+            f = open(app.config["FRONTEND_DISPLAY_DEFAULT"])
+            existingCompany = json.loads(f.read())
+            f.close()
+            resp["message"] = "No Company " + companyName + " Exists" 
+
+        resp["data"] = existingCompany
         resp["success"] = True
         return resp
 

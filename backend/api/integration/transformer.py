@@ -31,6 +31,9 @@ class Transformer:
         return configs
 
     @classmethod
-    def transformDisplaySettings(cls, data):
+    def transformDisplaySettings(cls, data, model):
         print("TRANSFORMING")
-        return data["displaySettings"]
+        print(data["displaySettings"])
+        displaySetting = model(**data["displaySettings"])
+        print(displaySetting.company)
+        return displaySetting

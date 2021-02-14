@@ -14,27 +14,33 @@ class Loader:
         return data
 
     @classmethod
-    def loadDisplaySettings(cls, data, model):
+    def loadDisplaySettings(cls, model):
         print("LOADING")
         
-        if cls.existsInDb(data, model):
-            print("in db")
-        else:
-            print("NOT IN DB")
-            print(db)
-            db.session.add(data)
-            print("session added")
+        if cls.existsInDb(model):
+
+            existingModel = model.query.filter_by(company=model.company).first()
+            for col in model.__mapper__.columns:
+                key = col.name
+                if key != "id":
+                    value = model.__dict__[key]
+                    existingModel.__setattr__(key, value)
+
             db.session.commit()
 
+        else:
+            db.session.add(model)
+            db.session.commit()
+        return model
+
     @classmethod
-    def existsInDb(cls, data, model):
+    def existsInDb(cls, model):
         result = None
 
-        if model.__table__ == "display_setting":
-            company = data.company
-            result = model.query.filter_by("company" == company)[0]
-
-        return result != None
+        if model.__tablename__ == "display_setting":
+            company = model.company
+            result = model.query.filter_by(company=company).first()
+        return result != None   
 
 
 
