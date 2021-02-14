@@ -1,0 +1,32 @@
+
+
+.dashboard-toolbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.toolbar-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 1%;
+}
+
+.toolbar-button{
+    padding: 1%;
+    background-color: red;
+    cursor: pointer;
+}
+
+.filter-display {
+    display: flex;
+    flex-direction: column;
+}
+
+.column-filter-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,20 @@
+{
+    "siteSettings": {
+        "itemsPerRow": 4,
+        "itemsPerRowMobile": 1,
+        "endpoints": {
+            "displaySettings": "/api/displaySettings",
+            "displaySettingsDefault": "/api/displaySettings",
+            "siteSettings": "/api/siteSettings",
+            "siteSettingsDefault": "/api/siteSettings"
+        }
+    },
+
+    "defaultDisplaySettings": {
+        "title": "defaultDisplaySettings",
+        "company": "default",
+        "mainColour": "grey",
+        "secondaryColour": "red",
+        "font": ""
+    }
+}

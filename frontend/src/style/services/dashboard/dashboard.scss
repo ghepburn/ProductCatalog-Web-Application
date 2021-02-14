@@ -1,0 +1,28 @@
+@import 'toolbar';
+@import 'functional';
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-view-title {
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.dashboard-view-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+}
+
+.dashboard-table {
+    width: 100%;
+    // margin:
+}
+
+.table-row {
+    overflow-x: auto;
+}

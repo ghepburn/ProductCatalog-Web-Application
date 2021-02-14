@@ -1,0 +1,62 @@
+@import "Variables";
+
+
+.button {
+    background-color:$button-color;
+    padding: 8%;
+    border-radius: 5px;
+    box-shadow: 1px 1px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    border-color: black;
+    box-shadow: 2px 2px 2px 2px;
+    font-size: 80%;
+}
+
+.button:hover {
+    background-color: $button-hover-color;
+    box-shadow: 2px 2px 0px 0px;
+}
+
+.shiftButton {
+    background-color:white;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding: 4%;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-weight: bold;
+}
+
+.shiftButton:hover {
+    box-shadow: 3px 3px 3px 3px;
+}
+
+.shiftButtons{
+    display: flex;
+    flex-direction: row;
+}
+
+// NON-MOBILE
+// -------------------------------
+@media(min-width: 900px) {
+
+    // .button {
+    //     padding: 1%;
+    //     padding-left: 2%;
+    //     padding-right: 2%;
+    //     font-size: 60%;
+    // }
+
+    .shiftButton {
+        margin-top: 2%;
+        margin-bottom: 0%;
+        padding: 2%;
+        padding-right: 3%;
+        padding-left: 3%;
+    }
+
+}

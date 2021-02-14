@@ -1,0 +1,60 @@
+
+.form {
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 0%;
+}
+
+.formSection {
+    display: flex;
+    flex-direction: row;
+    padding-top: 2%;
+    padding-bottom: 6%;
+}
+
+.formSectionTitle {
+    width: 25%;
+}
+
+.formSectionContent {
+    width: 75%;
+    margin-right: 2%;
+}
+
+.formSectionSubContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 4%;
+}
+
+
+// NON-MOBILE
+// -------------------------------------------
+
+@media(min-width: 900px) {
+
+    .form {
+        padding-top: 0%;
+        padding-bottom: 0%;
+        margin-left: 5%;
+        margin-right: 5%;
+        width: auto;
+        border-radius: 20px;
+    }
+
+    .formSection {
+        display: flex;
+        flex-direction: row;
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
+    .formSectionSubContent {
+        margin-bottom: 2%;
+    }
+
+}

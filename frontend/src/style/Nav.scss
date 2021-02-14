@@ -1,0 +1,15 @@
+
+
+.nav {
+    font-size: 60%;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navItem {
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 5%;
+    margin-right: 5%;
+}
