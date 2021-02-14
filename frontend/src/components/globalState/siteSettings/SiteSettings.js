@@ -1,8 +1,16 @@
 export class SiteSettings {
 
-    customers = [
-        "Gay Leaf",
-        "Microsoft"
-    ]
+    constructor() {
+        this.companies = [
+            {"name":"Gay Leaf"}, 
+            {"name":"Microsoft"}
+        ]
+    }
+
+    setAttributes = (siteSettings) => {
+        for (let key in Object.keys(siteSettings)) {
+            this[key] = siteSettings[key]
+        }
+    }
 
 }

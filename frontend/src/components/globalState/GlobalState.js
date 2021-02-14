@@ -1,33 +1,38 @@
 import React, {Component} from 'react';
 
 // import global contexts
-import {DisplaySettings} from "./displaySettings/DisplaySettings";
-import DisplaySettingsContext from './displaySettings/DisplaySetttingsContext';
+import {SiteSettings} from "./siteSettings/SiteSettings";
+import SiteSettingsContext from './siteSettings/SiteSettingsContext';
 
-// import {SiteSettings} from "./siteSettings";
+import Client from "../Client";
 
 class GlobalState extends Component {
-    state = {  
-        displaySettings: new DisplaySettings()
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            siteSettings: new SiteSettings(),
+            client: new Client()
+        }
     }
 
-    // DISPLAY SETTINGS
-
-    getDisplaySettings = () => {
-        return this.state.displaySettings;
+    // SITE SETTINGS
+    getSiteSettings = () => {
+        return this.state.siteSettings;
     }
 
-    setDisplaySettings = (displaySettings) => {
-        this.setState({displaySettings: displaySettings});
-        return displaySettings;
+    setSiteSettings = (siteSettings) => {
+        this.setState({siteSettings: siteSettings});
+        return siteSettings;
     }
 
 
     render() { 
         return ( 
-            <DisplaySettingsContext.Provider value={{getDisplaySettings: this.getDisplaySettings, setDisplaySettings: this.setDisplaySettings}} >
+            <SiteSettingsContext.Provider value={{siteSettings: this.state.siteSettings, setSiteSettings: this.setSiteSettings, client: this.state.client}} >
                 {this.props.children}
-            </DisplaySettingsContext.Provider>
+            </SiteSettingsContext.Provider>
         );
     }
 }

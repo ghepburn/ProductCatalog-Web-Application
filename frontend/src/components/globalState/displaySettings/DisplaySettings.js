@@ -1,28 +1,21 @@
 export class DisplaySettings {
 
-    
-
-    constructor() {
-        this.setDefaults();
-    }
-
-    setDefaults() {
-        
-        // buttons
-        this.buttonHighlightColor = "lightgreen";
-
-        // forms
-        this.formRowLength = this.getFormRowLength();
-
-        //product view
-        this.productsPerRow = 4;
-        this.rowsPerPage = 4;
-    }
+    buttonHighlightColor = "lightgreen";
 
     itemsPerRowMobile = 1;
     itemsPerRow = 4;
 
-    static getItemsPerRow() {
+    constructor() {
+        
+    }
+
+    setAttributes(displaySettings) {
+        for (key in Object.keys(displaySettings)) {
+            this.key = displaySettings[key]
+        }
+    }
+
+    getItemsPerRow() {
         const screenWidth = this.getScreenWidth();
         console.log(screenWidth);
         switch(screenWidth) {
@@ -33,7 +26,7 @@ export class DisplaySettings {
         }
     }
 
-    static getScreenWidth() {
+    getScreenWidth() {
         return window.screen.width;
     }
     
