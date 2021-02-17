@@ -5,21 +5,19 @@ import withSiteSettingsContext from "./globalState/stateDecorators/withSiteSetti
 
 const Admin = ({client, setSiteSettings, siteSettings}) => {
 
-    console.log("STARTING ADMIN");
-
     const changeSiteSettings = (updatedSiteSettings) => {
         // update state
-        // setSiteSettings(updatedSiteSettings);
+        setSiteSettings(updatedSiteSettings);
 
         // persist changes
-        // client.postSiteSettings(updatedSiteSettings);
-        console.log("saved site settings");
-        console.log(updatedSiteSettings);
+        client.postSiteSettings(updatedSiteSettings);
+
+        console.log("COMPLETE");
+        
         return updatedSiteSettings;
     }
 
     const inputForms = [
-        <InputForm content={siteSettings.companies} onChange={changeSiteSettings} />,
         <InputForm content={siteSettings} onChange={changeSiteSettings} />
     ]
 

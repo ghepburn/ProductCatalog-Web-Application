@@ -1,4 +1,4 @@
-export class DisplaySettings {
+export default class DisplaySettings {
 
     buttonHighlightColor = "lightgreen";
 

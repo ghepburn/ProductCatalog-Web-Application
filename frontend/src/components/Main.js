@@ -40,8 +40,8 @@ const Main = ({siteSettings, setSiteSettings, client}) => {
             landing: `/${name}`
         }
 
-        routes.push(<Route exact path={company.routes.admin} component={() => <ComponentAdmin  company={company} />} />);
-        routes.push(<Route exact path={company.routes.dashboard} component={() => <Dashboard  company={company} />} />);
+        routes.push(<Route exact path={company.routes.admin} component={() => <ComponentAdmin  company={company} client={client}/>} />);
+        routes.push(<Route exact path={company.routes.dashboard} component={() => <Dashboard  company={company} client={client} siteSettings={siteSettings}/>} />);
         routes.push(<Route path={company.routes.product} component={() => <ProductView  company={company} />} />);
         routes.push(<Route exact path={company.routes.landing} component={() => <Landing  company={company} />} />);
     

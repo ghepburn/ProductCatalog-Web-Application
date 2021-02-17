@@ -1,15 +1,15 @@
 import React, {useContext} from 'react';
-import DisplaySettingsContext from "../displaySettings/DisplaySetttingsContext";
+import DisplaySettingsContext from "../displaySettings/DisplaySettingsContext";
 
 const withDisplaySettingsContext = (WrappedComponent) => {
     return (props) => {
         const displaySettingsContext = useContext(DisplaySettingsContext);
 
-        const getDisplaySettings = displaySettingsContext.getDisplaySettings;
+        const displaySettings = displaySettingsContext.displaySettings;
         const setDisplaySettings = displaySettingsContext.setDisplaySettings;
 
         return (
-            <WrappedComponent {...props} setDisplaySettings={setDisplaySettings} getDisplaySettings={getDisplaySettings} />
+            <WrappedComponent {...props} setDisplaySettings={setDisplaySettings} displaySettings={displaySettings} />
         );
     }
 }

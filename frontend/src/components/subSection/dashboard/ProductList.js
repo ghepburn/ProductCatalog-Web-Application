@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import withDisplaySettingsContext from "../../globalState/stateDecorators/withDisplaySettingsContext";
+import withDisplaySettingsContext from "../state/stateDecorators/withDisplaySettingsContext";
 
 
 

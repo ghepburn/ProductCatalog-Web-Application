@@ -1,47 +1,43 @@
 import React from 'react';
 
 const InputForm = ({content, onChange}) => {
-    
-    const [contentState, setContentState] = React.useState(content);
 
+    console.log("CONTENT");
+    console.log(content);
+
+    const contentState = content;
+    
     const saveForm = () => {
         onChange(contentState);
     }
 
     const updateState = (event) => {
-        const key = event.target.key;
+        const key = event.target.name;
         const value = event.target.value;
-        const contentStateCopy = contentState;
-        contentStateCopy[key] = value;
-        setContentState(contentStateCopy);
-        console.log(value);
+        contentState[key] = value;
     }
 
-    console.log("CONTENT");
-    console.log(content);
     const rows = Object.keys(content).map((key) => {
-        console.log(key);
-        console.log(content[key]);
-        if (typeof(content[key]) == String || typeof(content[key]) == Number) {
-        return(
-            <tr>
-                <td>
-                    {key}
-                </td>
-                <td>
-                    <input onChange={updateState} defaultValue={content[key]}></input>
-                </td>
-            </tr>
-        );
-    })
+       
+        if (typeof(content[key]) != "object") {
+            return(
+                <tr>
+                    <td className="form-data-value">
+                        {key}
+                    </td>
+                    <td className="form-data-input">
+                        <input className="form-input" name={key} onChange={updateState} defaultValue={content[key]}></input>
+                    </td>
+                </tr>
+            );
+        }
+    });
 
     return (  
-        <div className="form input-form">
-            <table>
-                {rows}
-            </table>
+        <table className="form input-form">
+            {rows}
             <button onClick={saveForm}>Save</button>
-        </div>
+        </table>
     );
 }
  
