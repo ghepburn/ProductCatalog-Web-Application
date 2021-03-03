@@ -1,35 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import DisplaySettings from "./displaySettings/DisplaySettings";
-import DisplaySettingsContext from "./displaySettings/DisplaySettingsContext";
+import ProductsContext from "./productsContext/ProductsContext";
 
-class SubSectionState extends Component {
+class SubSectionState extends React.Component {
 
     constructor(props) {
         super(props);
-        const company = props.company;
+        const client = props.client;
+        let products = [];
+
+        console.log("init subSectionState");
 
         this.state = {
-            displaySettings: props.displaySettings
+            products: products,
+            client: client
         }
     }
 
-    // DISPLAY SETTINGS
-    getDisplaySettings = () => {
-        return this.state.displaySettings;
+    componentDidMount = async () => {
+        if (!this.state.client.hasFetchedProducts) {
+            const getProducts = async () => {
+                const updatedProducts = await this.state.client.getProducts(); 
+                return updatedProducts;            
+            } 
+            const updatedProducts = await getProducts();
+            this.setProducts(updatedProducts);
+        }
     }
 
-    setDisplaySettings = (displaySettings) => {
-        this.setState({displaySettings: displaySettings});
-        return displaySettings;
-    }
+   setProducts = (products) => {
+       this.setState({
+           products: products
+       });
+       return products;
+   }
 
 
     render() { 
         return ( 
-            <DisplaySettingsContext.Provider value={{displaySettings: this.state.displaySettings, setDisplaySettings: this.setDisplaySettings}} >
+            <ProductsContext.Provider value={{products: this.state.products, setProducts: this.setProducts}} >
                 {this.props.children}
-            </DisplaySettingsContext.Provider>
+            </ProductsContext.Provider>
         );
     }
 }

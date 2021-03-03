@@ -5,19 +5,15 @@ import ComponentAdmin from "./subSection/admin/Admin";
 import Dashboard from "./subSection/dashboard/Dashboard";
 import Landing from "./subSection/landing/Landing";
 import ProductView from "./subSection/dashboard/productView/ProductView";
-import Base from "./subSection/Base";
 import Admin from "./Admin";
 
 import withSiteSettingsContext from "./globalState/stateDecorators/withSiteSettingsContext";
 import withDisplaySettingsContext from "./globalState/stateDecorators/withDisplaySettingsContext";
+import SubSectionState from './subSection/state/SubSectionState';
 
 
 const Main = ({siteSettings, displaySettings, setSettings, client}) => {
 
-    console.log("displaySettings");
-    console.log(displaySettings);
-    console.log("siteSettings");
-    console.log(siteSettings);
 
     if (!client.hasFetchedSettings) {
         const getSettings = async () => {
@@ -29,8 +25,7 @@ const Main = ({siteSettings, displaySettings, setSettings, client}) => {
     
     
     let companies = siteSettings.companies;
-    
-    // let companiesSubSections = [];
+
 
     //Dynamically define routes
     const routes = [];

@@ -1,18 +1,29 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import withDisplaySettingsContext from "../state/stateDecorators/withDisplaySettingsContext";
+
+import withProductsContext from "../state/stateDecorators/withProductsContext";
 
 
 
-const ProductList = ({products, history, company, getDisplaySettings}) => {
+const ProductList = ({products, history, company}) => {
 
-    const productsPerRow = getDisplaySettings().productsPerRow;
+    let productsView;
+    const displaySettings = company.displaySettings;
 
-    const productsView = products.map((product) => {
-        return(
-            <button onClick={() => {history.push(`${company.routes.dashboard}/${product.name}`)}}>{product.name}</button>
-        );
-    });
+    if (products.length) {
+
+        productsView = products.map((product) => {
+            return(
+                <button onClick={() => {history.push(`${company.routes.dashboard}/${product.name}`)}}>{product.name}</button>
+            );
+        });
+        
+    } else {
+
+        productsView = "No Products Available";
+
+    }
+
 
     return (  
         <div className="product-list">
@@ -21,4 +32,4 @@ const ProductList = ({products, history, company, getDisplaySettings}) => {
     );
 }
  
-export default withDisplaySettingsContext(withRouter(ProductList));
+export default withProductsContext(withRouter(ProductList));

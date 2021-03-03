@@ -10,6 +10,7 @@ class Client {
     hasFetchedSiteSettings = false;
     hasFetchedDisplaySettings = false;
     hasFetchedSettings = false;
+    hasFetchedProducts = false;
 
     constructor() {
 
@@ -77,7 +78,9 @@ class Client {
 
 
     getProducts = () => {
+        console.log("Client getting products");
         const products = productData;
+        this.hasFetchedProducts = true;
         return products;
     }
 
