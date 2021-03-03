@@ -1,12 +1,12 @@
 export default class DisplaySettings {
 
-    buttonHighlightColor = "lightgreen";
-
-    primaryColour = "red";
-
-    itemsPerRowMobile = 1;
-    itemsPerRow = 4;
-
+    default = {
+        buttonHighlightColor: "lightgreen",
+        primaryColour: "red",
+        itemsPerRowMobile: 1,
+        itemsPerRow: 4,
+    }
+    
     constructor() {
         
     }

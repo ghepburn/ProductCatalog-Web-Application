@@ -7,9 +7,10 @@ class SubSectionState extends Component {
 
     constructor(props) {
         super(props);
+        const company = props.company;
 
         this.state = {
-            displaySettings: new DisplaySettings(),
+            displaySettings: props.displaySettings
         }
     }
 

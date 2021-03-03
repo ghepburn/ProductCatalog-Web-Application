@@ -1,16 +1,1 @@
-{
-  "siteSettings": {
-    "companies": [
-      {"name": "walmart"},
-      {"name": "costco"}
-    ],
-    "itemsPerRowMobile": 1,
-    "siteSettingsEndpoint": "/api/siteSettings"
-  },
-  "defaultDisplaySettings": {
-    "company": "default",
-    "mainColour": "grey",
-    "secondaryColour": "red",
-    "font": ""
-  }
-}
+{"siteSettings": {"companies": [{"name": "walmart", "routes": {"admin": "/walmart/admin", "dashboard": "/walmart/products", "product": "/walmart/products/:productName", "landing": "/walmart"}, "displaySettings": {"company": "walmart", "font": "", "id": 1, "mainColour": "blue", "secondaryColour": "blue"}}, {"name": "costco", "routes": {"admin": "/costco/admin", "dashboard": "/costco/products", "product": "/costco/products/:productName", "landing": "/costco"}, "displaySettings": {"company": "costco", "font": "", "id": 2, "mainColour": "blue", "secondaryColour": "white"}}], "itemsPerRowMobile": "4", "siteSettingsEndpoint": "/api/siteSettings"}, "defaultDisplaySettings": {"company": "default", "mainColour": "grey", "secondaryColour": "red", "font": ""}}

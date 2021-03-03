@@ -12,10 +12,12 @@ from api.integration.loader import Loader
 
 @app.route('/')
 def base():
+    print('API IN SERVICE')
     return 'API IN SERVICE'
 
 @app.route('/api')
 def api():
+    print("DESIGN INNOVATIONS API")
     return "DESIGN INNOVATIONS API"
 
 # accepts
@@ -29,6 +31,7 @@ def siteSettings():
     resp = response
 
     if request.method == "POST":
+        print(request.data)
         configs = json.loads(request.data)["data"]
         
         try: 
@@ -50,7 +53,7 @@ def siteSettings():
             resp["success"] = False
             resp["data"] = ""
 
-            print(resp["message"])
+        print(resp)
 
         return resp
 
@@ -78,6 +81,7 @@ def displaySettings():
 
     resp["data"] = json.loads(data)
     resp["success"] = True
+    print(resp)
     return resp
 
 
@@ -92,6 +96,7 @@ def companyDisplaySettings(companyName):
         except:
             resp["message"] = "Invalid Input"
             resp["success"] = False
+            print(resp)
             return resp
         
         # integrate
@@ -116,7 +121,7 @@ def companyDisplaySettings(companyName):
             resp["success"] = False
             resp["data"] = ""
 
-            print(resp["message"])
+        print(resp)
 
         return resp
 
@@ -136,6 +141,64 @@ def companyDisplaySettings(companyName):
 
         resp["data"] = existingCompany
         resp["success"] = True
+        print(resp)
+        return resp
+
+    else:
+        print("METHOD NOT SUPPORTED")
+        return "METHOD NOT SUPPORTED"
+
+
+@app.route('/api/settings/displaysettings/all', methods=["GET"])
+def allCompaniesDisplaySettings():
+    resp = response
+    if request.method == "GET":
+        
+        companies = DisplaySetting.query.all()
+        if companies:
+            print("TRUE")
+            companies_dict = {}
+            for i in range(len(companies)):
+                companies_dict[companies[i].company] = companies[i].to_dict()
+
+        else:
+            resp["message"] = "No Companies Exist" 
+
+        resp["data"] = companies_dict
+        resp["success"] = True
+        print(resp)
+        return resp
+
+    else:
+        return "METHOD NOT SUPPORTED"
+
+@app.route('/api/settings/all', methods=["GET"])
+def allSettings():
+    resp = response
+    if request.method == "GET":
+
+        data = {}
+        data["displaySettings"] = {}
+        data["siteSettings"] = {}
+        
+        # display settings
+        companies = DisplaySetting.query.all()
+        if companies:
+            for i in range(len(companies)):
+                data["displaySettings"][companies[i].company] = companies[i].to_dict()
+        else:
+            resp["message"] = "No Companies Exist" 
+        
+        #  site settings
+        db = open(app.config["FRONTEND_CONFIGS"])
+        siteSettingsData = db.read()
+        db.close()
+
+        data["siteSettings"] = json.loads(siteSettingsData)
+
+        resp["data"] = data
+        resp["success"] = True
+        print(resp)
         return resp
 
     else:

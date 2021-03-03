@@ -1,20 +1,23 @@
 import React from 'react';
-import withDisplaySettingsContext from "../state/stateDecorators/withDisplaySettingsContext";
+import withDisplaySettingsContext from "../../globalState/stateDecorators/withDisplaySettingsContext";
 import InputForm from "../../utils/forms/InputForm";
 
-const Admin = ({company, client, setDisplaySettings}) => {
+const Admin = ({company, client, setCompanyDisplaySettings}) => {
 
-    let displaySettings = []
-    const getDisplaySettings = async () => {
-        displaySettings = await client.getCompanyDisplaySettings(company.name);
-        console.log(displaySettings);
+    const saveDisplaySettings = async (updatedDisplaySettings) => {
+        console.log("SAVE SETTINGS");
+
+        //persist
+        const newDisplaySettings = await client.setCompanyDisplaySettings(updatedDisplaySettings);
+        console.log(newDisplaySettings);
+        // change state
+        setCompanyDisplaySettings(updatedDisplaySettings);
     }
-    displaySettings = getDisplaySettings();
 
     return (  
         <div className="admin">
             <h2>{company.name} Admin</h2>
-            <InputForm content={displaySettings} />
+            <InputForm content={company.displaySettings} onChange={saveDisplaySettings} />
         </div>
     );
 }

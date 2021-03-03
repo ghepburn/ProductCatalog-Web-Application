@@ -5,14 +5,13 @@ import withSiteSettingsContext from "./globalState/stateDecorators/withSiteSetti
 
 const Admin = ({client, setSiteSettings, siteSettings}) => {
 
-    const changeSiteSettings = (updatedSiteSettings) => {
-        // update state
-        setSiteSettings(updatedSiteSettings);
+    const changeSiteSettings = async (updatedSiteSettings) => {
 
         // persist changes
-        client.postSiteSettings(updatedSiteSettings);
+        await client.postSiteSettings(updatedSiteSettings);
 
-        console.log("COMPLETE");
+        // update state
+        setSiteSettings(updatedSiteSettings);
         
         return updatedSiteSettings;
     }

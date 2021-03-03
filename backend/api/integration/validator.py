@@ -37,17 +37,17 @@ class Validator:
     @classmethod
     def validateDisplaySettings(cls, data):
         print("VALIDATING")
-        
+        print(data)
         # check for model object
         if not data["displaySettings"]:
             return False
-
+        
         # ensure mandatory fields are filled
         for field in cls.modelMandatoryFields:
             if not data["displaySettings"][field]:
                 print(field + " not in input")
                 return False
-
+        
         # ensure each field has a place in DB
         for field in data["displaySettings"].keys():
             if field not in cls.modelColumns:

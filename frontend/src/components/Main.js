@@ -5,26 +5,32 @@ import ComponentAdmin from "./subSection/admin/Admin";
 import Dashboard from "./subSection/dashboard/Dashboard";
 import Landing from "./subSection/landing/Landing";
 import ProductView from "./subSection/dashboard/productView/ProductView";
-import Base from "./Base";
+import Base from "./subSection/Base";
 import Admin from "./Admin";
 
 import withSiteSettingsContext from "./globalState/stateDecorators/withSiteSettingsContext";
+import withDisplaySettingsContext from "./globalState/stateDecorators/withDisplaySettingsContext";
 
 
-const Main = ({siteSettings, setSiteSettings, client}) => {
+const Main = ({siteSettings, displaySettings, setSettings, client}) => {
 
-    if (!client.hasFetchedSiteSettings) {
-        const callClient = async () => {
-            console.log("CALLING CLIENT");
-            const updatedSiteSettings = await client.getSiteSettings();
-            console.log(updatedSiteSettings);
-            setSiteSettings(updatedSiteSettings);
+    console.log("displaySettings");
+    console.log(displaySettings);
+    console.log("siteSettings");
+    console.log(siteSettings);
+
+    if (!client.hasFetchedSettings) {
+        const getSettings = async () => {
+            const updatedSettings = await client.getAllSettings();
+            setSettings(updatedSettings);
         }
-        callClient()
+        getSettings()
     }
-
+    
+    
     let companies = siteSettings.companies;
     
+    // let companiesSubSections = [];
 
     //Dynamically define routes
     const routes = [];
@@ -32,7 +38,7 @@ const Main = ({siteSettings, setSiteSettings, client}) => {
     for (let i = 0; i < companies.length; i++) {
         const company = companies[i];
         const name = company.name;
-
+        
         company.routes = {
             admin: `/${name}/admin`,
             dashboard: `/${name}/products`,
@@ -40,12 +46,22 @@ const Main = ({siteSettings, setSiteSettings, client}) => {
             landing: `/${name}`
         }
 
-        routes.push(<Route exact path={company.routes.admin} component={() => <ComponentAdmin  company={company} client={client}/>} />);
-        routes.push(<Route exact path={company.routes.dashboard} component={() => <Dashboard  company={company} client={client} siteSettings={siteSettings}/>} />);
+        company.displaySettings = displaySettings[company.name] ? displaySettings[company.name] : displaySettings["default"];
+        
+
+        routes.push(<Route exact path={company.routes.admin} component={() => <ComponentAdmin  company={company} client={client} />} />);
+        routes.push(<Route exact path={company.routes.dashboard} component={() => <Dashboard  company={company} client={client} />} />);
         routes.push(<Route path={company.routes.product} component={() => <ProductView  company={company} />} />);
         routes.push(<Route exact path={company.routes.landing} component={() => <Landing  company={company} />} />);
-    
+        
+        // let companySubSection = 
+        //     <Base company={company} client={client} >
+        //         {routes}
+        //     </Base>;
+
+        // companiesSubSections.push(companySubSection);
     }
+    routes.push(<Route exact path="/admin" component={Admin} />);
 
     return (  
         <div className="main">
@@ -53,8 +69,7 @@ const Main = ({siteSettings, setSiteSettings, client}) => {
             <Router>         
                 <Switch>
                     {routes}
-                    <Route exact path="/admin" component={Admin} />
-                    <Route path="/" component={Base} />
+                    {/* <Route exact path="/admin" component={Admin} /> */}
                 </Switch>
             </Router>
 
@@ -62,4 +77,4 @@ const Main = ({siteSettings, setSiteSettings, client}) => {
     );
 }
  
-export default withSiteSettingsContext(Main);
+export default withSiteSettingsContext(withDisplaySettingsContext(Main));
