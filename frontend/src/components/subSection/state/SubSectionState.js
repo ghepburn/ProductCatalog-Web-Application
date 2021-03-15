@@ -18,6 +18,7 @@ class SubSectionState extends React.Component {
     }
 
     componentDidMount = async () => {
+        console.log("MOUNTING ORODUCTS");
         if (!this.state.client.hasFetchedProducts) {
             const getProducts = async () => {
                 const updatedProducts = await this.state.client.getProducts(); 

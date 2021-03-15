@@ -26,3 +26,15 @@
 .table-row {
     overflow-x: auto;
 }
+
+.product-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

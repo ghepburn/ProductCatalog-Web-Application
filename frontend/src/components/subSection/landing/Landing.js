@@ -9,7 +9,7 @@ const Landing = ({history, company}) => {
     return (  
         <div className="landingPage">
             <h2>{company.name}</h2>
-            <p>{company.displaySettings.mainColour}</p>
+            {/* <p>{company.displaySettings.primaryColour}</p> */}
             <button onClick={() => {history.push(company.routes.dashboard)}}>Products</button>
         </div>
     );

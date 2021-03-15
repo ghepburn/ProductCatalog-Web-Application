@@ -23,9 +23,7 @@ const Main = ({siteSettings, displaySettings, setSettings, client}) => {
         getSettings()
     }
     
-    
     let companies = siteSettings.companies;
-
 
     //Dynamically define routes
     const routes = [];
@@ -41,21 +39,24 @@ const Main = ({siteSettings, displaySettings, setSettings, client}) => {
             landing: `/${name}`
         }
 
-        company.displaySettings = displaySettings[company.name] ? displaySettings[company.name] : displaySettings["default"];
-        
+        //set comapny display settings
+        if (displaySettings.length === 1) {
+            company.displaySettings = displaySettings[0];
+        } else {
+            for (let i = 0; i < displaySettings.length; i++) {
+                if (displaySettings[i].company === company.name) {
+                    company.displaySettings = displaySettings[i];
+                }
+            }
+        }
 
         routes.push(<Route exact path={company.routes.admin} component={() => <ComponentAdmin  company={company} client={client} />} />);
         routes.push(<Route exact path={company.routes.dashboard} component={() => <Dashboard  company={company} client={client} />} />);
         routes.push(<Route path={company.routes.product} component={() => <ProductView  company={company} />} />);
         routes.push(<Route exact path={company.routes.landing} component={() => <Landing  company={company} />} />);
-        
-        // let companySubSection = 
-        //     <Base company={company} client={client} >
-        //         {routes}
-        //     </Base>;
 
-        // companiesSubSections.push(companySubSection);
     }
+
     routes.push(<Route exact path="/admin" component={Admin} />);
 
     return (  

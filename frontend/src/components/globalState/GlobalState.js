@@ -15,16 +15,42 @@ class GlobalState extends Component {
 
         this.state = {
             siteSettings: new SiteSettings(),
-            displaySettings: new DisplaySettings(),
+            displaySettings: [new DisplaySettings()],
             client: new Client()
         }
     }
 
     // All SETTINGS
     setSettings = (settings) => {
+        
+        const displaySettings = settings["displaySettings"];
+        const defaultDisplaySettings = new DisplaySettings();
+
+        const siteSettings = settings["siteSettings"];
+
+        let newDisplaySettingsState = []
+
+        // for each company insert defaults and add to state
+        for (let company in displaySettings) {
+
+            const companyDisplaySetting = displaySettings[company];
+            companyDisplaySetting.company = company;
+
+            // Insert default values
+            for (let key of Object.keys(defaultDisplaySettings)) {
+                if (!companyDisplaySetting[key]) {
+                    companyDisplaySetting[key] = defaultDisplaySettings[key];
+                }
+            }
+
+            // create state object
+            const companyState = new DisplaySettings(companyDisplaySetting);
+            newDisplaySettingsState.push(companyState);
+        }
+        
         this.setState({
-            siteSettings: settings["siteSettings"],
-            displaySettings: settings["displaySettings"]
+            siteSettings: siteSettings,
+            displaySettings: newDisplaySettingsState
         });
     }
 

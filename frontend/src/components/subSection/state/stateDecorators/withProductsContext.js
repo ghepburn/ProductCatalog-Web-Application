@@ -9,6 +9,9 @@ const withProductsContext = (WrappedComponent) => {
         const setProducts = productsContext.setProducts;
         const products = productsContext.products;
 
+        console.log("PRODUCTSCONTEXT");
+        console.log(products);
+
         return (
             <WrappedComponent {...props} products={products} setProducts={setProducts} />
         );

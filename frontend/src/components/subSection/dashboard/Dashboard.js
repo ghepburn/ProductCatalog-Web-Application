@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import ProductList from "./ProductList";
 import ProductFilter from "./functionality/ProductFilter";
 
-import withProductsContext from "../state/stateDecorators/withProductsContext";
 import SubSectionState from '../state/SubSectionState';
+import ProductListBase from './productList/ProductListBase';
 
 
 const Dashboard = ({company, client}) => {
@@ -28,7 +27,7 @@ const Dashboard = ({company, client}) => {
             <div className="dashboard-content">
                 <SubSectionState client={client}>
                     <ProductFilter />   
-                    <ProductList company={company} />
+                    <ProductListBase company={company} />
                 </SubSectionState>
             </div>
         </div>
