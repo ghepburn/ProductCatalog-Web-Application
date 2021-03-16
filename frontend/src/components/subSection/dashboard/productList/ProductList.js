@@ -8,8 +8,6 @@ const ProductList = ({history, company}) => {
 
     const products = useContext(PaginationContext).products;
 
-    console.log("PRODUCT LIST");
-    console.log(products);
     let productsList;
 
     if (products.length) {
@@ -25,7 +23,7 @@ const ProductList = ({history, company}) => {
             });
 
             return(
-                <Row row={productItems} />
+                <Row products={productItems} />
             );
 
         });
@@ -33,7 +31,6 @@ const ProductList = ({history, company}) => {
     } else {
         productsList = "No Products Available";
     }
-
 
     return (  
         <div className="product-list">

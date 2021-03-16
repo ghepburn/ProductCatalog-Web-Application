@@ -8,10 +8,12 @@ class DisplaySetting(db.Model, SerializerMixin):
     primaryColour = db.Column(db.String(30), nullable=True)
     secondaryColour = db.Column(db.String(30), nullable=True)
     buttonColour = db.Column(db.String(30), nullable=True)
+    buttonHighlightColour = db.Column(db.String(30), nullable=True)
 
     font = db.Column(db.String(30), nullable=True)
 
     productsPerRow = db.Column(db.Integer)
+    productsPerRowMedium = db.Column(db.Integer)
     productsPerRowMobile = db.Column(db.Integer)
     productRowsPerPage = db.Column(db.Integer)
     productRowsPerPageMobile = db.Column(db.Integer)

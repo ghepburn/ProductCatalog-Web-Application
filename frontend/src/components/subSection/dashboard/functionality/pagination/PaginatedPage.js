@@ -44,7 +44,12 @@ const PaginatedPage = ({products, children, displaySettings}) => {
 
             // to grab leftover products
             if (productCount === products.length) {
-                productRows.push(row);
+                // Fill last row with blanks
+                while (count < productsPerRow) {
+                    const blank = {};
+                    row.push(blank);
+                    count += 1;
+                }
             }
 
             if (count === productsPerRow) {
@@ -61,24 +66,20 @@ const PaginatedPage = ({products, children, displaySettings}) => {
         let pages = [];
         let page = [];
         let rowCount = 0;
+        let i = 0;
         for (let row of productRows) {
-            console.log("ROOW");
-            console.log(row);
+            i += 1;
             rowCount += 1;
             page.push(row);
-            console.log(rowCount);
-            console.log(rowsPerPage);
-            if (rowCount === rowsPerPage || rowCount === productRows.length) {
-                rowCount = 0;
+            if (i === rowsPerPage || rowCount === productRows.length) {
                 pages.push(page);
                 page = [];
+                i = 0;
             }
         }
 
         // Step #3: Identify one page to pass
-        console.log("PAGES");
-        console.log(pages);
-        paginatedProducts = pages.length ? pages[pageNumber] : [];
+        paginatedProducts = pages.length ? pages[pageNumber-1] : [];
     }
 
 

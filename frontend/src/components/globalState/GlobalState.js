@@ -52,6 +52,9 @@ class GlobalState extends Component {
             siteSettings: siteSettings,
             displaySettings: newDisplaySettingsState
         });
+
+        console.log("DISPLAY SETTINGS");
+        console.log(displaySettings);
     }
 
     // SITE SETTINGS

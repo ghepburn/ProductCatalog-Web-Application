@@ -3,14 +3,15 @@ export default class DisplaySettings {
     primaryColour = "green";
     secondaryColour = "orange";
     buttonColour = "grey";
-    buttonHighlightColor = "lightgreen";
+    buttonHighlightColour = "lightgreen";
 
     font = "Times New Roman";
     
     productsPerRow = 4;
+    productsPerRowMedium = 2;
     productsPerRowMobile = 1;
-    productRowPerPage = 12;
-    productRowPerPageMobile = 8;
+    productRowsPerPage = 6;
+    productRowsPerPageMobile = 2;
     
     constructor(displaySettings) {
         if (displaySettings) {
@@ -26,8 +27,10 @@ export default class DisplaySettings {
 
     getItemsPerRow() {
         const screenWidth = this.getScreenWidth();
-        if (screenWidth > 200) {
+        if (screenWidth > 1000) {
             return this.productsPerRow;
+        } else if (screenWidth > 600) {
+            return this.productsPerRowMedium;
         } else {
             return this.productsPerRowMobile;
         }
@@ -35,7 +38,7 @@ export default class DisplaySettings {
 
     getRowsPerPage() {
         const screenWidth = this.getScreenWidth();
-        if (screenWidth > 200) {
+        if (screenWidth > 600) {
             return this.productRowsPerPage;
         } else {
             return this.productRowsPerPageMobile;

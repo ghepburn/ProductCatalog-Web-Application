@@ -7,20 +7,6 @@ import ProductListBase from './productList/ProductListBase';
 
 const Dashboard = ({company, client}) => {
 
-    // const [products, setProducts] = React.useState([]);
-
-    // console.log(client.hasFetchedProducts);
-    // console.log(products);
-
-    // if (!client.hasFetchedProducts) {
-    //     const getProducts = () => {
-    //         const updatedProducts = client.getProducts(); 
-    //         return updatedProducts;            
-    //     } 
-    //     const updatedProducts = getProducts();
-    //     setProducts(updatedProducts);
-    // }
-
     return (  
         <div className="dashboard">
             <h1>Dashboard</h1>
