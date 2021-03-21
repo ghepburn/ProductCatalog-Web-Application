@@ -8,12 +8,11 @@ const withProductsContext = (WrappedComponent) => {
 
         const setProducts = productsContext.setProducts;
         const products = productsContext.products;
-
-        console.log("PRODUCTSCONTEXT");
-        console.log(products);
+        const filter = productsContext.filter;
+        const setFilter = productsContext.setFilter;
 
         return (
-            <WrappedComponent {...props} products={products} setProducts={setProducts} />
+            <WrappedComponent {...props} products={products} setProducts={setProducts} filter={filter} setFilter={setFilter} />
         );
     }
 }

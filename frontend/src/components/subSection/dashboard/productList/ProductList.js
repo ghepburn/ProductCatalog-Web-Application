@@ -1,36 +1,36 @@
 import React, {useContext} from 'react';
 import { withRouter } from "react-router-dom";
 import ProductListItem from "./ProductListItem";
-import PaginationContext from "../functionality/pagination/PaginationContext";
 import Row from "./Row";
 
-const ProductList = ({history, company}) => {
+/**
+ * 
+ * @param {array} products -- array of arrays
+ *  
+ * @returns 
+ */
+const ProductList = ({history, displaySettings, products}) => {
 
-    const products = useContext(PaginationContext).products;
-
-    let productsList;
-
-    if (products.length) {
-
-        productsList = products.map((row) => {
-            let productItems = row.map((item) => {
-                const onClick = () => {
-                    console.log("CLICKED");
-                }
-                return(
-                    <ProductListItem product={item} onClick={onClick} />
-                );
-            });
-
-            return(
-                <Row products={productItems} />
-            );
-
-        });
-        
-    } else {
-        productsList = "No Products Available";
+    if (!products.length) {
+        return "No Products Available";
     }
+
+    let productsList = products.map((row) => {
+
+        let productItems = row.map((item) => {
+            const onClick = () => {
+                console.log("CLICKED");
+            }
+            return(
+                <ProductListItem product={item} displaySettings={displaySettings} onClick={onClick} />
+            );
+        });
+
+        return(
+            <Row products={productItems} />
+        );
+
+    });
 
     return (  
         <div className="product-list">

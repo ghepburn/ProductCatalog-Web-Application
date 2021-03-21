@@ -88,6 +88,7 @@ class GlobalState extends Component {
                 displaySettings: currentDisplaySettings
             });
         }
+        console.log(currentDisplaySettings);
 
         return currentDisplaySettings;
     }

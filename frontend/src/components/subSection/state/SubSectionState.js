@@ -1,4 +1,5 @@
 import React from 'react';
+import Filter from "../dashboard/functionality/filter/Filter";
 
 import ProductsContext from "./productsContext/ProductsContext";
 
@@ -9,16 +10,15 @@ class SubSectionState extends React.Component {
         const client = props.client;
         let products = [];
 
-        console.log("init subSectionState");
-
         this.state = {
             products: products,
+            filter: new Filter(),
+            initiallProducts: products,
             client: client
         }
     }
 
     componentDidMount = async () => {
-        console.log("MOUNTING ORODUCTS");
         if (!this.state.client.hasFetchedProducts) {
             const getProducts = async () => {
                 const updatedProducts = await this.state.client.getProducts(); 
@@ -29,17 +29,41 @@ class SubSectionState extends React.Component {
         }
     }
 
+    getFilter = () => {
+        return this.state.filter;
+    }
+
+    setFilter = (updatedFilter) => {
+        this.setState({filter: updatedFilter});
+        return updatedFilter;
+    }
+
+    //Applys filter
+    getProducts = () => {
+        let products = this.state.products;
+        let filter = this.state.filter;
+        let filteredProducts = [];
+        if (products.length) {
+            filteredProducts = filter.execute(products);
+        }
+        return filteredProducts;
+
+    }
+
    setProducts = (products) => {
        this.setState({
            products: products
        });
+
+       if (this.state.initiallProducts.length === 0) {
+           this.setState({initiallProducts: products});
+       }
        return products;
    }
 
-
     render() { 
         return ( 
-            <ProductsContext.Provider value={{products: this.state.products, setProducts: this.setProducts}} >
+            <ProductsContext.Provider value={{products: this.getProducts(), setProducts: this.setProducts, filter: this.state.filter, setFilter: this.setFilter}} >
                 {this.props.children}
             </ProductsContext.Provider>
         );

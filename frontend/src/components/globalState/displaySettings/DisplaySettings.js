@@ -12,6 +12,9 @@ export default class DisplaySettings {
     productsPerRowMobile = 1;
     productRowsPerPage = 6;
     productRowsPerPageMobile = 2;
+
+    productSelectedBackgroundColour = "grey";
+    productCompareBackgroundColour = "lightgrey";
     
     constructor(displaySettings) {
         if (displaySettings) {

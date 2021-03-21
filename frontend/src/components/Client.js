@@ -1,5 +1,6 @@
 import axios from "axios";
 import {productData} from "../data/productData";
+import Integrater from "./integration/Integrater";
 
 class Client {
 
@@ -81,7 +82,8 @@ class Client {
         console.log("Client getting products");
         const products = productData;
         this.hasFetchedProducts = true;
-        return products;
+        const transformedProducts = Integrater.transformProducts(products);
+        return transformedProducts;
     }
 
 }

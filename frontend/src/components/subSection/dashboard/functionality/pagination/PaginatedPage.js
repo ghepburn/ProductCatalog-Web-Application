@@ -1,6 +1,14 @@
 import React, {useState} from 'react';
-import PaginationContext from "./PaginationContext";
 
+
+/**
+ * 
+ * @param {array} products
+ * @param {array} children
+ * @param {object} displaySettings
+ *  
+ * @returns Context of pages -- ex: Pages = [[prod1, prod2, prod3], [prod1, prod2, prod3]]
+ */
 const PaginatedPage = ({products, children, displaySettings}) => {
 
     let paginatedProducts = [];
@@ -82,12 +90,17 @@ const PaginatedPage = ({products, children, displaySettings}) => {
         paginatedProducts = pages.length ? pages[pageNumber-1] : [];
     }
 
+    const paginatedPageChildren = React.Children.toArray(children).map((child) => {
+        return(
+            React.cloneElement(child, {products:paginatedProducts})
+        );
+    });
+
 
     return (  
         <div className="paginated-page">
-             <PaginationContext.Provider value={{products: paginatedProducts}} >
-                {children}
-             </PaginationContext.Provider>
+
+             {paginatedPageChildren}
 
              <div className="paginaton-controls">
                 <button onClick={decrementPage}>Back</button>

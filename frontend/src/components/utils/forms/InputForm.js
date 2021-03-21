@@ -2,9 +2,6 @@ import React from 'react';
 
 const InputForm = ({content, onChange}) => {
 
-    console.log("CONTENT");
-    console.log(content);
-
     const contentState = content;
     
     const saveForm = () => {
