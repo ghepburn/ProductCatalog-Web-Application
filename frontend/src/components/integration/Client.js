@@ -1,6 +1,6 @@
 import axios from "axios";
-import {productData} from "../data/productData";
-import Integrater from "./integration/Integrater";
+import {productData} from "../../data/productData";
+import Integrater from "./Integrater";
 
 class Client {
 

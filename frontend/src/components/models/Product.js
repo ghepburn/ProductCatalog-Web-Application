@@ -1,5 +1,4 @@
-class Product {
-    id = 0;
+export default class Product {
 
     constructor(id, data) {
         this.id = id;
@@ -12,7 +11,5 @@ class Product {
         console.log("ID: " + this.id + anotherProduct.id);
         return this.id === anotherProduct.id;
     }
-
+     
 }
-
-export default Product;

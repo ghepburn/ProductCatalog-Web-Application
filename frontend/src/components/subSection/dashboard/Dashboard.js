@@ -10,12 +10,14 @@ const Dashboard = ({products, setProducts, filter, setFilter, company}) => {
 
     return (   
         <div className="dashboard">
-            <h1>Dashboard</h1>
+            <div className="dashboard-title">
+                Dashboard
+            </div>
             <div className="dashboard-content">
                 <div className="left-sidebar">
                     <ProductsFilter products={products} filter={filter} setFilter={setFilter} />
                 </div>
-                <div className="right-sidebar">
+                <div className="primary-content">
                     <ProductsSort products={products} setProducts={setProducts} />
                     <ProductsCompare company={company}>
                         <PaginatedPage products={products} displaySettings={company.displaySettings}>

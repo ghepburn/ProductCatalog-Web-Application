@@ -1,5 +1,8 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
+
+import TitlePhoto from "../../views/TitlePhoto";
+
 import withDisplaySettings from "../../globalState/stateDecorators/withDisplaySettingsContext";
 
 const Landing = ({history, company}) => {
@@ -7,10 +10,9 @@ const Landing = ({history, company}) => {
     console.log(company.displaySettings);
 
     return (  
-        <div className="landingPage">
-            <h2>{company.name}</h2>
-            {/* <p>{company.displaySettings.primaryColour}</p> */}
-            <button onClick={() => {history.push(company.routes.dashboard)}}>Products</button>
+        <div className="landing">
+            <TitlePhoto image={company.image} />
+            <button className="standard-button" onClick={() => {history.push(company.routes.dashboard)}}>Products</button>
         </div>
     );
 }

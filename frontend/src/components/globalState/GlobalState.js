@@ -6,7 +6,7 @@ import SiteSettingsContext from './siteSettings/SiteSettingsContext';
 import DisplaySettings from "./displaySettings/DisplaySettings";
 import DisplaySettingsContext from './displaySettings/DisplaySettingsContext';
 
-import Client from "../Client";
+import Client from "../integration/Client";
 
 class GlobalState extends Component {
 

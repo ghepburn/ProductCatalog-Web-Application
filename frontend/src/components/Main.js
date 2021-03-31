@@ -1,15 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import ComponentAdmin from "./subSection/admin/Admin";
-import DashboardRouter from "./subSection/dashboard/DashboardRouter";
-import Landing from "./subSection/landing/Landing";
-import ProductView from "./subSection/dashboard/productView/ProductView";
 import Admin from "./Admin";
+import SubSectionMain from "./subSection/Main";
 
 import withSiteSettingsContext from "./globalState/stateDecorators/withSiteSettingsContext";
 import withDisplaySettingsContext from "./globalState/stateDecorators/withDisplaySettingsContext";
-import SubSectionState from './subSection/state/SubSectionState';
 
 
 const Main = ({siteSettings, displaySettings, setSettings, client}) => {
@@ -33,12 +29,13 @@ const Main = ({siteSettings, displaySettings, setSettings, client}) => {
         const name = company.name;
         
         company.routes = {
+            base: `/${name}`,
             admin: `/${name}/admin`,
             dashboard: `/${name}/products`,
-            product: `/${name}/products/product/`,
-            landing: `/${name}`,
+            product: `/${name}/products/product/:productId`,
             compare: `/${name}/products/compare`
         }
+        company.image = "http://via.placeholder.com/640x360";
 
         //set comapny display settings
         if (displaySettings.length === 1) {
@@ -51,9 +48,7 @@ const Main = ({siteSettings, displaySettings, setSettings, client}) => {
             }
         }
 
-        routes.push(<Route exact path={company.routes.admin} component={() => <ComponentAdmin  company={company} client={client} />} />);
-        routes.push(<Route path={company.routes.dashboard} component={() => <DashboardRouter  company={company} client={client} />} />);
-        routes.push(<Route exact path={company.routes.landing} component={() => <Landing  company={company} />} />);
+        routes.push(<Route path={company.routes.base} component={() => <SubSectionMain  company={company} client={client} />} />);
 
     }
 
