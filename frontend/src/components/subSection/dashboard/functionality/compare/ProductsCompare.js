@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCompareContext from "./ProductCompareContext";
 import CompareBottomBar from "./CompareBottomBar";
+import ProductCompareView from "./ProductCompareView";
 
 /**
  * Transforms products input based off of filters
@@ -11,31 +12,24 @@ import CompareBottomBar from "./CompareBottomBar";
  * 
  * @returns array filteredProducts
  */
-const ProductsCompare = ({products, setProducts, children}) => {
-    console.log("rendering products compare");
-    
-    let [selectedProducts, setSelectedProducts] = React.useState([]);
-    let [compareMode, setCompareMode] = React.useState(false);
+class ProductsCompare extends React.Component {
 
-    // console.log("SELECTED PRODUCTS");
-    // console.log(selectedProducts);
+    constructor(props) {
+        super(props);
 
-    // const onCompareClick = () => {
-    //     if (!mode) {
-    //         setMode("compare");
-    //     } else {
-    //         setMode(null);
-    //         // //unselect all products
-    //         // let updatedProducts = products.map((product)=>{
-    //         //     product.selected = false;
-    //         //     return product;
-    //         // });
-    //         // setProducts(updatedProducts);
-    //     }
-    // }
+        this.state = {
+            selectedProducts: [],
+            compareMode: false
+        }
+    }
 
-    const selectProduct = (product) => {
-        let updatedSelectedProducts = selectedProducts;
+    setSelectedProducts = (products) => {
+        this.setState({selectedProducts: products});
+    }
+
+    selectProduct = (product) => {
+
+        let updatedSelectedProducts = this.state.selectedProducts;
 
         //check if it exists already
         let found = false;
@@ -49,19 +43,28 @@ const ProductsCompare = ({products, setProducts, children}) => {
         if (!found) {
             updatedSelectedProducts.push(product);
         }
-        console.log("setting products");
-        setSelectedProducts(updatedSelectedProducts);
+        this.setSelectedProducts(updatedSelectedProducts);
+        
+        product.selected = !product.selected;
+        return product;
     }
 
-    return (  
-        <div className="compare-products">
-            <button onClick={()=>{setCompareMode(!compareMode)}}>Compare</button>
-            <ProductCompareContext.Provider value={{selectedProducts: selectedProducts, selectProduct: selectProduct, compareMode: compareMode}}>
-                {children}
-            </ProductCompareContext.Provider>
-            <CompareBottomBar selectedProducts={selectedProducts} />
-        </div>
-    );
+    setCompareMode = () => {
+        this.setState({compareMode: !this.state.compareMode, selectedProducts: []});
+    }
+
+    render() {
+
+        return (  
+            <div className="compare-products">
+                <button onClick={this.setCompareMode}>Compare</button>
+                <ProductCompareContext.Provider value={{selectedProducts: this.state.selectedProducts, selectProduct: this.selectProduct, compareMode: this.state.compareMode}}>
+                    {this.props.children}
+                </ProductCompareContext.Provider>
+                <CompareBottomBar selectedProducts={this.state.selectedProducts} company={this.props.company} />
+            </div>
+        );
+    }
 }
  
 export default ProductsCompare;

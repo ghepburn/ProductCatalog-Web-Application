@@ -1,14 +1,13 @@
 import React from 'react';
+import ViewForm from "../../../utils/forms/ViewForm";
 
-const ProductView = () => {
+const ProductView = (location) => {
+    
 
     return (  
         <div className="product-view">
             <table>
-                <tr>
-                    <td>=Name: </td>
-                    <td>SOME PRODUCT</td>
-                </tr>
+                {/* <ViewForm content={product}/> */}
             </table>
         </div>
     );

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import ComponentAdmin from "./subSection/admin/Admin";
-import Dashboard from "./subSection/dashboard/Dashboard";
+import DashboardRouter from "./subSection/dashboard/DashboardRouter";
 import Landing from "./subSection/landing/Landing";
 import ProductView from "./subSection/dashboard/productView/ProductView";
 import Admin from "./Admin";
@@ -35,8 +35,9 @@ const Main = ({siteSettings, displaySettings, setSettings, client}) => {
         company.routes = {
             admin: `/${name}/admin`,
             dashboard: `/${name}/products`,
-            product: `/${name}/products/:productName`,
-            landing: `/${name}`
+            product: `/${name}/products/product/`,
+            landing: `/${name}`,
+            compare: `/${name}/products/compare`
         }
 
         //set comapny display settings
@@ -51,8 +52,7 @@ const Main = ({siteSettings, displaySettings, setSettings, client}) => {
         }
 
         routes.push(<Route exact path={company.routes.admin} component={() => <ComponentAdmin  company={company} client={client} />} />);
-        routes.push(<Route exact path={company.routes.dashboard} component={() => <Dashboard  company={company} client={client} />} />);
-        routes.push(<Route path={company.routes.product} component={() => <ProductView  company={company} />} />);
+        routes.push(<Route path={company.routes.dashboard} component={() => <DashboardRouter  company={company} client={client} />} />);
         routes.push(<Route exact path={company.routes.landing} component={() => <Landing  company={company} />} />);
 
     }
@@ -65,7 +65,6 @@ const Main = ({siteSettings, displaySettings, setSettings, client}) => {
             <Router>         
                 <Switch>
                     {routes}
-                    {/* <Route exact path="/admin" component={Admin} /> */}
                 </Switch>
             </Router>
 

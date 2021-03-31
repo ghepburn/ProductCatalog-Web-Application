@@ -1,20 +1,31 @@
 import React from 'react';
+import { withRouter, useRouteMatch } from "react-router-dom";
 import withProductCompareContext from "../functionality/compare/withProductCompareContext";
 
-const ProductListItem = ({product, displaySettings, onClick, selectProduct, compareMode}) => {
-
+const ProductListItem = ({company, product, displaySettings, onClick, selectedProducts, selectProduct, compareMode, history}) => {
+    let match = useRouteMatch();
+    
     const name = product.name ? product.name : "";
     let productBackgroundColour = displaySettings.productBackgroundColour;
 
     let outerClick = () => {
-        
+        history.push(company.routes.product + product.id);
     }
 
-    //account for mode
+    //account for compareMode
     if (compareMode) {
-        productBackgroundColour = product.selected ? displaySettings.productSelectedBackgroundColour : displaySettings.productCompareBackgroundColour;
+        let productIsSelected = (product) => {
+            let result = false;
+            for (let i = 0; selectedProducts.length > i; i++) {
+                if(product.equals(selectedProducts[i])) {
+                    result = true;
+                }
+            }
+            return result;
+        }
+        productBackgroundColour = productIsSelected(product) ? displaySettings.productSelectedBackgroundColour : displaySettings.productCompareBackgroundColour;
         outerClick = () => {
-            selectProduct(product);
+            product = selectProduct(product);
         }
     }
 
@@ -27,4 +38,4 @@ const ProductListItem = ({product, displaySettings, onClick, selectProduct, comp
     );
 }
  
-export default withProductCompareContext(ProductListItem);
+export default withRouter(withProductCompareContext(ProductListItem));

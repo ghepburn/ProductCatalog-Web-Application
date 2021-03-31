@@ -1,3 +1,5 @@
+import Product from "./Product";
+
 class Integrater {
 
     static productCount = 0;
@@ -5,17 +7,10 @@ class Integrater {
     static transformProducts = (products) => {
         return products.map((product)=>{
 
-            //Add Fields
-                //Compare Feature
-            product["selected"] = false;
-            product["id"] = this.getProductId();
+            let id = this.getProductId();
+            let productModel = new Product(id, product);
 
-            //Add Methods
-            product.equals = (anotherProduct) => {
-                return this.id === anotherProduct.id;
-            }
-
-            return product;
+            return productModel;
 
         });
     }

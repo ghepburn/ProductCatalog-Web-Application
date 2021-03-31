@@ -1,26 +1,35 @@
 import React from 'react';
-// import withProductCompareContext from "./withProductCompareContext";
+import {Link, withRouter} from "react-router-dom";
 
-const CompareBottomBar = ({selectedProducts}) => {
-
-    console.log("RENDERING BOTTOM BAR");
-    console.log(selectedProducts);
+const CompareBottomBar = ({selectedProducts, history, company}) => {
 
     const compareProducts = () => {
-        console.log("lets compare products");
+        const productIdList = selectedProducts.map((product)=>{
+            return(
+                product.id
+            );
+        });
+        const location = {
+            pathname: company.routes.compare,
+            search: "?products=" + productIdList.toString()
+        };
+        console.log(location);
+        history.push(location);
     }
 
-    const numOfProductsSelected = selectedProducts.length;
-    const compareProductsButton = numOfProductsSelected > 0 ? <button onClick={compareProducts}>Compare Selected Products</button> : "";
+    const compareProductsButton = selectedProducts.length > 0 ? <button onClick={compareProducts}>Compare Selected Products</button> : "";
+    let selectedProductsBasket = selectedProducts.map((product)=>{
+        return(
+            <p>{product.id}</p>
+        );
+    });
 
     return (  
-        <div className="compare-bottom-bar">
-            <p>
-                Count: {numOfProductsSelected}
-            </p>
+        <div className="compare-products-basket">
+            {selectedProductsBasket}
             {compareProductsButton}
         </div>
     );
 }
  
-export default CompareBottomBar;
+export default withRouter(CompareBottomBar);

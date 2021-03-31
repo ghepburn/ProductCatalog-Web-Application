@@ -1,21 +1,31 @@
-import React, {useState} from 'react';
+import React from 'react';
+import ProductsCompare from "./functionality/compare/ProductsCompare";
+import ProductsSort from "./functionality/sort/ProductsSort";
+import ProductsFilter from "./functionality/filter/ProductsFilter";
+import PaginatedPage from "./functionality/pagination/PaginatedPage";
+import ProductList from "./productList/ProductList";
+import withProductsContext from "../state/stateDecorators/withProductsContext";
 
-import SubSectionState from '../state/SubSectionState';
-import ProductListBase from './productList/ProductListBase';
+const Dashboard = ({products, setProducts, filter, setFilter, company}) => {
 
-
-const Dashboard = ({company, client}) => {
-
-    return (  
+    return (   
         <div className="dashboard">
             <h1>Dashboard</h1>
             <div className="dashboard-content">
-                <SubSectionState client={client}>
-                    <ProductListBase company={company} />
-                </SubSectionState>
+                <div className="left-sidebar">
+                    <ProductsFilter products={products} filter={filter} setFilter={setFilter} />
+                </div>
+                <div className="right-sidebar">
+                    <ProductsSort products={products} setProducts={setProducts} />
+                    <ProductsCompare company={company}>
+                        <PaginatedPage products={products} displaySettings={company.displaySettings}>
+                            <ProductList company={company} displaySettings={company.displaySettings} />
+                        </PaginatedPage>
+                    </ProductsCompare>
+                </div>
             </div>
         </div>
-    );
+    );  
 }
  
-export default Dashboard;
+export default withProductsContext(Dashboard);

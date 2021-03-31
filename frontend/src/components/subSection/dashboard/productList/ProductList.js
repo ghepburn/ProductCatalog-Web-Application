@@ -1,5 +1,4 @@
-import React, {useContext} from 'react';
-import { withRouter } from "react-router-dom";
+import React from 'react';
 import ProductListItem from "./ProductListItem";
 import Row from "./Row";
 
@@ -9,7 +8,7 @@ import Row from "./Row";
  *  
  * @returns 
  */
-const ProductList = ({history, displaySettings, products}) => {
+const ProductList = ({company, displaySettings, products}) => {
 
     if (!products.length) {
         return "No Products Available";
@@ -22,7 +21,7 @@ const ProductList = ({history, displaySettings, products}) => {
                 console.log("CLICKED");
             }
             return(
-                <ProductListItem product={item} displaySettings={displaySettings} onClick={onClick} />
+                <ProductListItem company={company} product={item} displaySettings={displaySettings} onClick={onClick} />
             );
         });
 
@@ -39,4 +38,4 @@ const ProductList = ({history, displaySettings, products}) => {
     );
 }
  
-export default withRouter(ProductList);
+export default ProductList;
