@@ -1,19 +1,18 @@
 import React from 'react';
 
-const ViewForm = ({content}) => {
+const ViewForm = ({item}) => {
 
-    const contentState = content;
 
-    const rows = Object.keys(content).map((key) => {
+    const rows = Object.keys(item).map((key) => {
        
-        if (typeof(content[key]) != "object") {
+        if (typeof(item[key]) != "object" && typeof(item[key]) != "function") {
             return(
                 <tr>
                     <td className="form-data-value">
-                        {key}
+                        {key}:
                     </td>
                     <td className="form-data-input">
-                        {content[key]}
+                        {item[key]}
                     </td>
                 </tr>
             );

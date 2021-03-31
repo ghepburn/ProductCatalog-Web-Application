@@ -4,18 +4,9 @@ import withProductsContext from "../../../state/stateDecorators/withProductsCont
 import Helper from "../../../../utils/Helper";
 
 const ProductCompareView = ({products, location}) => {
-    console.log("compare");
-    // const stripSearchParams = (searchParamString) => {
-    //     let splitArray = searchParamString.split("=");
-    //     let params = splitArray[1];
-    //     let productIds = params.split(",");
-    //     return productIds;
-    // }
-    
-    // let productIds = stripSearchParams(location.search);
-    let searchParams = Helper.getUrlParams(location.search);
-    let productIds = searchParams["products"];
-    console.log(productIds);
+
+    let urlParams = Helper.getUrlParams(location.search);
+    let productIds = urlParams["products"];
     
     let productsToCompare = products.filter((product)=>{
         return productIds.includes(product.id.toString());
