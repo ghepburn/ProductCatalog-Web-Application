@@ -7,11 +7,11 @@ const ViewForm = ({item}) => {
        
         if (typeof(item[key]) != "object" && typeof(item[key]) != "function") {
             return(
-                <tr>
-                    <td className="form-data-value">
+                <tr className="form-row">
+                    <td className="form-key">
                         {key}:
                     </td>
-                    <td className="form-data-input">
+                    <td className="form-value">
                         {item[key]}
                     </td>
                 </tr>

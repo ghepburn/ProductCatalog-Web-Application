@@ -8,11 +8,17 @@ const withProductsContext = (WrappedComponent) => {
 
         const setProducts = productsContext.setProducts;
         const products = productsContext.products;
+
         const filter = productsContext.filter;
         const setFilter = productsContext.setFilter;
 
+        const compareMode = productsContext.compareMode;
+        const toggleCompareMode = productsContext.toggleCompareMode;
+        const selectedProducts = productsContext.selectedProducts;
+        const selectProduct = productsContext.selectProduct;
+
         return (
-            <WrappedComponent {...props} products={products} setProducts={setProducts} filter={filter} setFilter={setFilter} />
+            <WrappedComponent {...props} products={products} setProducts={setProducts} filter={filter} setFilter={setFilter} compareMode={compareMode} toggleCompareMode={toggleCompareMode} selectedProducts={selectedProducts} selectProduct={selectProduct} />
         );
     }
 }

@@ -51,8 +51,7 @@ class Validator:
         # ensure each field has a place in DB
         for field in data["displaySettings"].keys():
             if field not in cls.modelColumns:
-                print(field + " is not accepted")
-                return False
+                data.displaySettings.pop(field)
         return True            
 
     @classmethod

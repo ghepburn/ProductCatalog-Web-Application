@@ -10,8 +10,8 @@ const Checkbox = ({title, onClick, checked}) => {
     
     return (  
         <div className="checkbox">
-            <label>{title}</label>
-            <input name={title} type="checkbox" onChange={onChange} checked={checked}></input>
+            <label className="checkbox-label">{title}</label>
+            <input className="checkbox-input" name={title} type="checkbox" onChange={onChange} checked={checked}></input>
         </div>
         
     );

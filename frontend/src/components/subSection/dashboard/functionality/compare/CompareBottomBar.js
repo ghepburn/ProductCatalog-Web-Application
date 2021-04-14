@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link, withRouter} from "react-router-dom";
 
-const CompareBottomBar = ({selectedProducts, history, company}) => {
+import withProductCompareContext from "../../../state/stateDecorators/withProductCompareContext";
+
+const CompareBottomBar = ({selectedProducts, compareMode, history, company}) => {
 
     const compareProducts = () => {
         const productIdList = selectedProducts.map((product)=>{
@@ -32,4 +34,4 @@ const CompareBottomBar = ({selectedProducts, history, company}) => {
     );
 }
  
-export default withRouter(CompareBottomBar);
+export default withRouter(withProductCompareContext(CompareBottomBar));

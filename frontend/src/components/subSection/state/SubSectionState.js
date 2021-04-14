@@ -1,6 +1,7 @@
 import React from 'react';
 import Filter from "../dashboard/functionality/filter/Filter";
 
+import ProductCompareContext from './compareContext/ProductCompareContext';
 import ProductsContext from "./productsContext/ProductsContext";
 
 class SubSectionState extends React.Component {
@@ -14,7 +15,9 @@ class SubSectionState extends React.Component {
             products: products,
             filter: new Filter(),
             initiallProducts: products,
-            client: client
+            client: client,
+            selectedProducts: [],
+            compareMode: false
         }
     }
 
@@ -61,10 +64,37 @@ class SubSectionState extends React.Component {
        return products;
    }
 
+    selectProduct = (product) => {
+        let updatedSelectedProducts = this.state.selectedProducts;
+
+        //check if it exists already
+        let found = false;
+        for (let i = 0; i < updatedSelectedProducts.length; i++) {
+            let nextProduct = updatedSelectedProducts[i];
+            if (nextProduct.equals(product)) {
+                found = true;
+                updatedSelectedProducts.splice(i, 1);
+            } 
+        }
+        if (!found) {
+            updatedSelectedProducts.push(product);
+        }
+        this.setState({selectedProducts: updatedSelectedProducts});
+
+        product.selected = !product.selected;
+        return product;
+    }
+
+   toggleCompareMode = () => {
+       this.setState({compareMode: !this.state.compareMode});
+   }
+
     render() { 
         return ( 
             <ProductsContext.Provider value={{products: this.getProducts(), setProducts: this.setProducts, filter: this.state.filter, setFilter: this.setFilter}} >
-                {this.props.children}
+                <ProductCompareContext.Provider value={{selectedProducts: this.state.selectedProducts, selectProduct: this.selectProduct, toggleCompareMode: this.toggleCompareMode, compareMode: this.state.compareMode}}>    
+                    {this.props.children}
+                </ProductCompareContext.Provider>
             </ProductsContext.Provider>
         );
     }

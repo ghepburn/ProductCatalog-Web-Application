@@ -1,4 +1,5 @@
 @import 'toolbar';
+@import 'productList';
 @import 'functional';
 
 .dashboard {
@@ -6,35 +7,42 @@
     flex-direction: column;
 }
 
-.dashboard-view-title {
-    margin-bottom: 5%;
-    margin-top: 5%;
-}
+.dashboard-title {}
 
 .dashboard-content {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    overflow: auto;
-}
-
-.dashboard-table {
-    width: 100%;
-    // margin:
-}
-
-.table-row {
-    overflow-x: auto;
-}
-
-.product-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.product-row {
-    display: flex;
     flex-direction: row;
-    justify-content: center;
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.dashboard-content-secondary {
+    width: 25%;
+    height: 100%;
+
+    background-color: lightslategray;
+}
+
+.dashboard-content-primary {
+    width: 75%;
+    background-color: blue;
+}
+
+
+.dashboard-content-bottom {}
+
+
+//MEDIUM SCREEN
+// @media screen and (max-width: $mediumScreenWidthMax) {
+//     .dashboard-content-toolbar{
+        
+//     }
+// }
+
+//MOBILE SCREEN
+@media screen and (max-width: $mobileScreenWidthMax) {
+    .dashboard-content-toolbar{
+        display: none;
+        
+    }
 }

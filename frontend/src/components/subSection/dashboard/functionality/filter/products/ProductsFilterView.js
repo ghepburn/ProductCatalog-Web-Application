@@ -1,5 +1,5 @@
 import React from 'react';
-import AttributeDropDown from './AttributeDropDown';
+import BooleanForm from '../../../../../utils/forms/BooleanForm';
 
 const FilterView = ({products, filter, onUpdate, onClear}) => {
 
@@ -13,7 +13,7 @@ const FilterView = ({products, filter, onUpdate, onClear}) => {
             onUpdate(attribute, name);
         }
         return(
-            <AttributeDropDown attribute={attribute} attributeOptions={attributeOptions} onClick={onClick} />
+            <BooleanForm item={attribute} itemOptions={attributeOptions} onClick={onClick} />
         );
     });
     

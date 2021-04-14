@@ -1,52 +1,7 @@
-.admin {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 5%;
-}
+.admin {}
 
-.passwordPrompt {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20%;
-}
-
-.passwordInput {
-    margin-left: 2%;
-    margin-right: 2%;
-    width: 80%
-}
-
-.fileImporter {
+.admin-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-}
-
-.importButton {
-    background-color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.inputYear {
-    margin-bottom: 5%;
-}
-
-.inputErrorMessage {
-    font-size: 50%;
-    color:red;
-    margin-bottom: 5%;
-}
-
-.inputSuccessMessage {
-    font-size: 50%;
-    color:green;
-    margin-bottom: 5%;
 }

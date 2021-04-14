@@ -1,0 +1,15 @@
+.product-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-list-item{
+    height: 200px;
+}
+
+.product-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

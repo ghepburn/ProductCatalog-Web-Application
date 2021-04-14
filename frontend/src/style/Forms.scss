@@ -1,60 +1,60 @@
-
-.form {
-    background-color: white;
-    border-radius: 5px;
-    color: black;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    margin: 0%;
-}
-
-.formSection {
-    display: flex;
-    flex-direction: row;
-    padding-top: 2%;
-    padding-bottom: 6%;
-}
-
-.formSectionTitle {
-    width: 25%;
-}
-
-.formSectionContent {
-    width: 75%;
-    margin-right: 2%;
-}
-
-.formSectionSubContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 4%;
-}
+@import 'Variables';
 
 
-// NON-MOBILE
-// -------------------------------------------
 
-@media(min-width: 900px) {
 
-    .form {
-        padding-top: 0%;
-        padding-bottom: 0%;
-        margin-left: 5%;
-        margin-right: 5%;
-        width: auto;
-        border-radius: 20px;
-    }
+// $form-margin: 
 
-    .formSection {
-        display: flex;
-        flex-direction: row;
-        padding-top: 2%;
-        padding-bottom: 2%;
-    }
+// .form {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     background-color: white;
+//     border-radius: 5px;
+//     color: $main-text-color;
+//     padding-top: 2%;
+//     padding-bottom: 2%;
+//     margin: 22%;
+//     margin-top: 8%;
+//     margin-bottom: 8%;
+//     font: $primary-font;
+//     font-size: 80%;
+//     box-shadow: 1px 1px 2px 2px lightgray;
+// }
 
-    .formSectionSubContent {
-        margin-bottom: 2%;
-    }
+// .form-row {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: center;
+//     padding-left: 3%;
+//     padding-right: 3%;
+// }
 
-}
+// .form-key {
+//     display: flex;
+//     justify-content: left;
+//     padding: 2%;
+//     width: 70%;
+
+// }
+
+// .form-value {
+//     padding: 2%;
+//     width: 30%;
+// }
+
+// .form-value-input {
+//     font-size: 80%;
+//     height: 75%;
+//     overflow-x: scroll;
+// }
+
+// .form-button {
+//     @extend .button;
+//     width: 10%;
+//     display: flex;
+//     justify-content: center;
+//     margin: auto;
+//     margin-top: 10%;
+//     margin-bottom: 2%;
+// }

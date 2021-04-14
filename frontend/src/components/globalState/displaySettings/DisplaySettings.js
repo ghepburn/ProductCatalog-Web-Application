@@ -7,11 +7,11 @@ export default class DisplaySettings {
 
     font = "Times New Roman";
     
-    productsPerRow = 4;
+    productsPerRow = 3;
     productsPerRowMedium = 2;
     productsPerRowMobile = 1;
-    productRowsPerPage = 6;
-    productRowsPerPageMobile = 2;
+    productRowsPerPage = 10;
+    productRowsPerPageMobile = 5;
 
     productSelectedBackgroundColour = "grey";
     productCompareBackgroundColour = "lightgrey";

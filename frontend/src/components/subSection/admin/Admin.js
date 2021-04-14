@@ -1,6 +1,7 @@
 import React from 'react';
 import withDisplaySettingsContext from "../../globalState/stateDecorators/withDisplaySettingsContext";
 import InputForm from "../../utils/forms/InputForm";
+import TitlePhoto from '../../views/TitlePhoto';
 
 const Admin = ({company, client, setCompanyDisplaySettings}) => {
 
@@ -16,8 +17,10 @@ const Admin = ({company, client, setCompanyDisplaySettings}) => {
 
     return (  
         <div className="admin">
-            <h2>{company.name} Admin</h2>
-            <InputForm content={company.displaySettings} onChange={saveDisplaySettings} />
+            <TitlePhoto image={company.image} />
+            <div className="admin-content">
+                <InputForm content={company.displaySettings} onChange={saveDisplaySettings} />
+            </div>
         </div>
     );
 }

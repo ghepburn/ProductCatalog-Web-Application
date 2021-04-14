@@ -1,3 +1,7 @@
+// media
+$mobileScreenWidthMax: 800px;
+$mediumScreenWidthMax: 1000px;
+
 // colors
 $main-background-color: white;
 $secondary-color: red;
@@ -7,5 +11,10 @@ $main-text-color: black;
 $default-font-size: calc(10px + 2vmin);
 
 // buttons
-$button-color: lightblue;
-$button-hover-color: rgb(203, 240, 253);
+$button-color: white;
+$button-font-color: black;
+$button-hover-color: black;
+$button-hover-font-color: white;
+
+// fonts
+$primary-font: sans-serif;

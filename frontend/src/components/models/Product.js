@@ -7,7 +7,7 @@ export default class Product {
         }
     }
 
-    equals = (anotherProduct) => {
+    equals(anotherProduct) {
         console.log("ID: " + this.id + anotherProduct.id);
         return this.id === anotherProduct.id;
     }

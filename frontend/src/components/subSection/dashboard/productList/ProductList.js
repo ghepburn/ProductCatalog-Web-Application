@@ -17,11 +17,8 @@ const ProductList = ({company, displaySettings, products}) => {
     let productsList = products.map((row) => {
 
         let productItems = row.map((item) => {
-            const onClick = () => {
-                console.log("CLICKED");
-            }
             return(
-                <ProductListItem company={company} product={item} displaySettings={displaySettings} onClick={onClick} />
+                <ProductListItem company={company} product={item} displaySettings={displaySettings} />
             );
         });
 

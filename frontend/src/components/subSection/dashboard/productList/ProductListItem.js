@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter, useRouteMatch } from "react-router-dom";
-import withProductCompareContext from "../functionality/compare/withProductCompareContext";
+import withProductCompareContext from "../../state/stateDecorators/withProductCompareContext";
 
-const ProductListItem = ({company, product, displaySettings, onClick, selectedProducts, selectProduct, compareMode, history}) => {
+const ProductListItem = ({company, product, displaySettings, selectedProducts, selectProduct, compareMode, history}) => {
     let match = useRouteMatch();
     
     const name = product.name ? product.name : "";
@@ -33,7 +33,7 @@ const ProductListItem = ({company, product, displaySettings, onClick, selectedPr
 
     return (  
         <div className="product-list-item" onClick={outerClick} style={productStyleing}>
-            <button onClick={onClick}>{name}</button>
+            <button onClick={()=>{console.log("CLICKED")}}>{name}</button>
         </div>
     );
 }

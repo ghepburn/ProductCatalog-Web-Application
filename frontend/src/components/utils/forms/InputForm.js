@@ -18,12 +18,12 @@ const InputForm = ({content, onChange}) => {
        
         if (typeof(content[key]) != "object") {
             return(
-                <tr>
-                    <td className="form-data-value">
+                <tr className="form-row">
+                    <td className="form-key">
                         {key}
                     </td>
-                    <td className="form-data-input">
-                        <input className="form-input" name={key} onChange={updateState} defaultValue={content[key]}></input>
+                    <td className="form-value">
+                        <input className="form-value-input" name={key} onChange={updateState} defaultValue={content[key]}></input>
                     </td>
                 </tr>
             );
@@ -33,7 +33,7 @@ const InputForm = ({content, onChange}) => {
     return (  
         <table className="form input-form">
             {rows}
-            <button onClick={saveForm}>Save</button>
+            <button className="form-button" onClick={saveForm}>Save</button>
         </table>
     );
 }

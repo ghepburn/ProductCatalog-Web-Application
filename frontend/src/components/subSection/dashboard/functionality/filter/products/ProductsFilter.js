@@ -1,5 +1,5 @@
 import React from 'react';
-import FilterView from "./FilterView";
+import ProductsFilterView from "./ProductsFilterView";
 
 const ProductsFilter = ({products, filter, setFilter}) => {
 
@@ -27,11 +27,10 @@ const ProductsFilter = ({products, filter, setFilter}) => {
         setFilter(updatedFilter);
     }
 
-    const filterContent = showFilter ? <FilterView products={products} filter={filter} onUpdate={updateFilter} onClear={clearFilter} /> : "";
+    const filterContent = <ProductsFilterView products={products} filter={filter} onUpdate={updateFilter} onClear={clearFilter} />;
 
     return (  
         <div className="products-filter">
-            <button onClick={()=>{setShowFilter(!showFilter)}}>Filter</button>
             {filterContent}
         </div>  
     );

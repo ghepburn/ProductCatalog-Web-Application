@@ -12,7 +12,9 @@ const Landing = ({history, company}) => {
     return (  
         <div className="landing">
             <TitlePhoto image={company.image} />
-            <button className="standard-button" onClick={() => {history.push(company.routes.dashboard)}}>Products</button>
+            <div className="landing-content">
+                <button className="landing-button standard-button" onClick={() => {history.push(company.routes.dashboard)}}>Products</button>
+            </div>
         </div>
     );
 }

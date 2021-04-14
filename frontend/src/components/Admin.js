@@ -2,6 +2,7 @@ import React from 'react';
 import InputForm from "./utils/forms/InputForm";
 
 import withSiteSettingsContext from "./globalState/stateDecorators/withSiteSettingsContext";
+import TitlePhoto from './views/TitlePhoto';
 
 const Admin = ({client, setSiteSettings, siteSettings}) => {
 
@@ -22,7 +23,10 @@ const Admin = ({client, setSiteSettings, siteSettings}) => {
 
     return (  
         <div className="admin">
-            {inputForms}
+            <TitlePhoto />
+            <div className="admin-content">
+                {inputForms}
+            </div>
         </div>
     );
 }
