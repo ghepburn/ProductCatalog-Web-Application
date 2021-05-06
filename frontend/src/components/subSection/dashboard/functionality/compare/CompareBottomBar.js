@@ -1,9 +1,11 @@
 import React from 'react';
 import {Link, withRouter} from "react-router-dom";
+import MiniButton from "../../../../utils/buttons/MiniButton";
+import MiniSecondaryButton from "../../../../utils/buttons/MiniSecondaryButton";
 
 import withProductCompareContext from "../../../state/stateDecorators/withProductCompareContext";
 
-const CompareBottomBar = ({selectedProducts, compareMode, history, company}) => {
+const CompareBottomBar = ({selectedProducts, toggleCompareMode, history, company}) => {
 
     const compareProducts = () => {
         const productIdList = selectedProducts.map((product)=>{
@@ -19,17 +21,22 @@ const CompareBottomBar = ({selectedProducts, compareMode, history, company}) => 
         history.push(location);
     }
 
-    const compareProductsButton = selectedProducts.length > 0 ? <button onClick={compareProducts}>Compare Selected Products</button> : "";
+    
     let selectedProductsBasket = selectedProducts.map((product)=>{
         return(
-            <p>{product.id}</p>
+            <p className="compare-products-basket-item">{product.id}</p>
         );
     });
 
     return (  
-        <div className="compare-products-basket">
-            {selectedProductsBasket}
-            {compareProductsButton}
+        <div className="compare-bottom-bar">
+            <div className="compare-products-basket">
+                {selectedProductsBasket}
+            </div>
+            <div className="compare-products-basket-buttons">
+                <MiniSecondaryButton onClick={compareProducts} text="COMPARE" addClassName="compare-products-basket-button"/>
+                <MiniButton onClick={toggleCompareMode} text="CLOSE" addClassName="compare-products-basket-button"/>
+            </div>
         </div>
     );
 }

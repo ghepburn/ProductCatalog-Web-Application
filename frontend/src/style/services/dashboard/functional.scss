@@ -1,9 +1,77 @@
+@import "Variables";
+
 .movement-arrow:hover{
     cursor: pointer;
 }
 
 //compare
-.compare-products-basket {
+.compare-bottom-bar {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    background-color: $compare-bar-background-colour;
+
+    position: fixed;
+    top: 88%;
+}
+
+.compare-products-basket {
+    display: relative;
+    width: 80%;
+}
+
+.selected-product {
+    background-color: $selected-product-background-colour;
+}
+
+.un-selected-product {
+    background-color: $unselected-product-background-colour;
+}
+
+.compare-products-basket-item {}
+
+
+.compare-products-basket-buttons {
+    width: 12%;
+    position: fixed;
+    top:90%;
+    right: 0%;
+    display: flex;
+    flex-direction: column;
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+.compare-products-basket-button {
+    position: relative;
+    margin: 1%;
+    padding: 2%;
+    font-size: 50%;
+    // margin: auto;
+}
+
+//sort
+.product-sort-label {
+    font-size: 60%;
+    margin-right: 4%;
+}
+
+.product-sort-selector {
+    padding: 2%;
+    width: 60%;
+}
+
+//filter
+
+.filter-clear-button {
+    background-color: rgb(213, 223, 233);
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+.filter-clear-button:hover {
+    background-color: rgb(213, 223, 233);
+    border-color: darkgray;
+    box-shadow: 0px 0px 0px 0px;
+    color: black;
 }

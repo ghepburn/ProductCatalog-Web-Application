@@ -31,9 +31,9 @@ const ProductsSort = ({products, setProducts}) => {
     return (  
         <div className="product-sort">
             
-            <label>Sort</label>
+            <label className="product-sort-label">Sort By</label>
             
-            <select onChange={sortProducts}>
+            <select className="product-sort-selector" onChange={sortProducts}>
                 {sortDropDownOptions}
             </select>
 

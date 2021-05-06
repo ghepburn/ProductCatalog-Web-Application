@@ -1,6 +1,7 @@
 @import 'toolbar';
 @import 'productList';
 @import 'functional';
+@import 'productView';
 
 .dashboard {
     display: flex;
@@ -19,17 +20,18 @@
 .dashboard-content-secondary {
     width: 25%;
     height: 100%;
+    padding-bottom: 2%;
 
-    background-color: lightslategray;
+    background-color: rgb(213, 223, 233);
 }
 
 .dashboard-content-primary {
     width: 75%;
-    background-color: blue;
+    background-color: $main-background-color;
 }
 
 
-.dashboard-content-bottom {}
+.dashboard-bottom {}
 
 
 //MEDIUM SCREEN

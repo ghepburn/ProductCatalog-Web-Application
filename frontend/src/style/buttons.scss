@@ -3,14 +3,18 @@
 .button {
     cursor: pointer;
     padding: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
     background-color: $button-color;
     color: $button-font-color;
     font-family: $primary-font;
+    border: 3px solid $button-border-color;
 }
 
 .button:hover {
     background-color: $button-hover-color;
-    color: $button-hover-font-color;
+    color: $button-font-color;
+    border: 3px solid $button-hover-border-color;
 }
 
 .standard-button {
@@ -18,7 +22,34 @@
     font-size: 60%;
 }
 
-.boolean-form-button {}
+.mini-standard-button {
+    @extend .button;
+    font-size: 40%;
+    padding-left: 1%;
+    padding-right: 1%;
+    // height: 20%;
+}
+
+.mini-secondary-standard-button {
+    @extend .mini-standard-button;
+    background-color: $secondary-color;
+    color: $secondary-font-color;
+    border: 3px solid $secondary-color;
+}
+
+
+
+.secondary-button {
+    @extend .button;
+    font-size: 40%;
+}
+
+
+.boolean-form-button {
+    font-weight: bold;
+    font-size: 70%;
+    cursor: pointer;
+}
 
 
 

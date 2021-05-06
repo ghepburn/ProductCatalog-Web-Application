@@ -1,0 +1,42 @@
+
+
+.checkbox-label {
+    font-size: 65%;
+    cursor: pointer;
+}
+
+.checkbox-input {
+    cursor: pointer;
+    margin-right: 2%;
+}
+
+// IMAGE SLIDER
+.image-slider {
+    display: flex;
+    flex-direction: row;
+}
+.image-slider-left {
+    width: 20%;
+}
+
+.image-slider-right {
+    width: 80%;
+    flex-direction: row;
+    display: flex;
+}
+
+.image-slider-button {
+    font-weight: bold;
+    font-size: 110%;
+    border: none;
+}
+
+.image-slider-button:hover {
+    border: none;
+}
+
+.image-slider-secondary-image {
+    padding: 4%;
+    border-radius: 1px 1px 1px 1px;
+    border-color: lightslategray;
+}

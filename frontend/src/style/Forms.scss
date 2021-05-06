@@ -5,22 +5,11 @@
 
 // $form-margin: 
 
-// .form {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     background-color: white;
-//     border-radius: 5px;
-//     color: $main-text-color;
-//     padding-top: 2%;
-//     padding-bottom: 2%;
-//     margin: 22%;
-//     margin-top: 8%;
-//     margin-bottom: 8%;
-//     font: $primary-font;
-//     font-size: 80%;
-//     box-shadow: 1px 1px 2px 2px lightgray;
-// }
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 // .form-row {
 //     display: flex;

@@ -4,8 +4,11 @@ $mediumScreenWidthMax: 1000px;
 
 // colors
 $main-background-color: white;
-$secondary-color: red;
+$secondary-color: blue;
 $main-text-color: black;
+$selected-product-background-colour: #e5e2e2;
+$unselected-product-background-colour: #f8f6f6;
+$compare-bar-background-colour: lightgray;
 
 //sizes
 $default-font-size: calc(10px + 2vmin);
@@ -13,8 +16,13 @@ $default-font-size: calc(10px + 2vmin);
 // buttons
 $button-color: white;
 $button-font-color: black;
-$button-hover-color: black;
+$button-border-color: lightgrey;
+
+$button-hover-color: white;
 $button-hover-font-color: white;
+$button-hover-border-color: black;
 
 // fonts
 $primary-font: sans-serif;
+
+$secondary-font-color: white;

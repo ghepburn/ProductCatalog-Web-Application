@@ -1,0 +1,42 @@
+
+
+.product-view {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5%;
+}
+
+.product-view-primary {
+    padding-right: 1%;
+}
+
+.product-view-secondary {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1%;
+}
+
+.product-view-product-title {
+    font-size: 130%;
+    font-weight: bold;
+    display: flex;
+    justify-content: left;
+}
+
+.product-view-product-description {
+    font-size: 90%;
+    display: flex;
+    justify-content: left;
+}
+
+.product-view-product-id {
+    font-size: 75%;
+    display: flex;
+    justify-content: left;
+}
+
+.product-view-add-to-cart-button {
+    display: flex;
+    justify-content: left;
+}

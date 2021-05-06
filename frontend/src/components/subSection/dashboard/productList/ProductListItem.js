@@ -6,7 +6,7 @@ const ProductListItem = ({company, product, displaySettings, selectedProducts, s
     let match = useRouteMatch();
     
     const name = product.name ? product.name : "";
-    let productBackgroundColour = displaySettings.productBackgroundColour;
+    let productClassName; //= displaySettings.productBackgroundColour;
 
     let outerClick = () => {
         history.push(company.routes.product + product.id);
@@ -23,16 +23,16 @@ const ProductListItem = ({company, product, displaySettings, selectedProducts, s
             }
             return result;
         }
-        productBackgroundColour = productIsSelected(product) ? displaySettings.productSelectedBackgroundColour : displaySettings.productCompareBackgroundColour;
+        productClassName = productIsSelected(product) ? "selected-product" : "un-selected-product";
         outerClick = () => {
             product = selectProduct(product);
         }
     }
 
-    let productStyleing = {padding: "25px", margin: "10px", backgroundColor: productBackgroundColour};
+    // let productStyleing = {padding: "25px", margin: "10px", backgroundColor: productBackgroundColour};
 
     return (  
-        <div className="product-list-item" onClick={outerClick} style={productStyleing}>
+        <div className={`product-list-item ${productClassName}`} onClick={outerClick} >
             <button onClick={()=>{console.log("CLICKED")}}>{name}</button>
         </div>
     );

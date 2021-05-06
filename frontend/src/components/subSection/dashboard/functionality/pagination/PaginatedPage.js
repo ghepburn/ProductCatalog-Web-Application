@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import MiniButton from '../../../../utils/buttons/MiniButton';
 
 
 /**
@@ -103,8 +104,8 @@ const PaginatedPage = ({products, children, displaySettings}) => {
              {paginatedPageChildren}
 
              <div className="paginaton-controls">
-                <button onClick={decrementPage}>Back</button>
-                <button onClick={incrementPage}>Next</button>
+                <MiniButton onClick={decrementPage} text={"BACK"} />
+                <MiniButton onClick={incrementPage} text={"NEXT"} />
              </div>
         </div>
     );

@@ -17,7 +17,7 @@ const Main = ({match, company, client}) => {
             <SubSectionState client={client}>
                 <Switch>
                     <Route exact path={`${company.routes.admin}`} component={() => <Admin  company={company} client={client} />} />
-                    <Route exact path={`${company.routes.product}`} component={() => <ProductView  company={company} />} />
+                    <Route exact path={`${company.routes.product}:productId`} component={() => <ProductView  company={company} />} />
                     <Route exact path={`${company.routes.compare}`} component={() => <ProductCompareView />} />
                     <Route exact path={`${company.routes.dashboard}`} component={() => <Dashboard  company={company} client={client} />} />
                     <Route path={`${company.routes.base}`} component={() => <Landing  company={company} />} />

@@ -26,7 +26,7 @@ const BooleanForm = ({item, itemOptions, onClick}) => {
 
     return (  
         <div className="form boolean-form">
-            <button className={"standard-button boolean-form-button"} onClick={toggleDisplayOptions}>{item}</button>
+            <a className={"boolean-form-button"} onClick={toggleDisplayOptions}>{item}</a>
             <div className="boolean-form-content">
                 {content}
             </div>

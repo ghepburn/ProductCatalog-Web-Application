@@ -86,6 +86,10 @@ class SubSectionState extends React.Component {
     }
 
    toggleCompareMode = () => {
+       if (this.state.compareMode) {
+            this.setState({selectedProducts: []});
+       }
+
        this.setState({compareMode: !this.state.compareMode});
    }
 

@@ -1,8 +1,10 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 
-const StandardButton = ({onClick, text}) => {
+const StandardButton = ({onClick, text, addClassName}) => {
+
     return (  
-        <button className="standard-button" onClick={() => {onClick()}}>{text}</button>
+        <button className={`standard-button ${addClassName}`} onClick={() => {onClick()}} >{text}</button>
     );
 }
  

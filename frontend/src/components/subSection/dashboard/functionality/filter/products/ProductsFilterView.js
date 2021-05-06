@@ -20,7 +20,7 @@ const FilterView = ({products, filter, onUpdate, onClear}) => {
     return (  
         <div className="filter-view">
             {filterView}
-            <button onClick={onClear}>Clear</button>
+            <button className="secondary-button filter-clear-button" onClick={onClear}>CLEAR</button>
         </div>
     );
 }

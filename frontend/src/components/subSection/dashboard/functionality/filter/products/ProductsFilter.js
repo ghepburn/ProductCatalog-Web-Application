@@ -6,7 +6,7 @@ const ProductsFilter = ({products, filter, setFilter}) => {
     let [showFilter, setShowFilter] = React.useState(false);
 
     const updateFilter = (attribute, value) => {
-        let updatedFilter = filter;
+        let updatedFilter = filter; 
     
         if (filter.restrictions[attribute]) {
             if (filter.restrictions[attribute].includes(value)) {
@@ -15,7 +15,6 @@ const ProductsFilter = ({products, filter, setFilter}) => {
                 updatedFilter.add(attribute, value);
             }
         } else {
-            console.log("FALSE");
             updatedFilter.add(attribute, value);
         }
         setFilter(updatedFilter);

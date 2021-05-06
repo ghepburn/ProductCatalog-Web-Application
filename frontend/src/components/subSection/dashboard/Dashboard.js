@@ -13,7 +13,7 @@ import CompareBottomBar from './functionality/compare/CompareBottomBar';
 import withProductCompareContext from "../state/stateDecorators/withProductCompareContext";
 import withProductsContext from "../state/stateDecorators/withProductsContext";
 
-const Dashboard = ({products, setProducts, filter, setFilter, toggleCompareMode, company}) => {
+const Dashboard = ({products, setProducts, filter, setFilter, toggleCompareMode, company, compareMode}) => {
     console.log("DASHBOARD");
     console.log(company);
     return (   
@@ -32,7 +32,7 @@ const Dashboard = ({products, setProducts, filter, setFilter, toggleCompareMode,
                     <div className="dashboard-content-toolbar">
                         <div className="dashboard-content-toolbar-right">
                             <div className="toolbar-compare">
-                                <StandardButton onClick={toggleCompareMode} text={"Compare"}/>
+                                <StandardButton onClick={toggleCompareMode} text={"COMPARE"}/>
                             </div>
                             <div className="toolbar-sort">
                                 <ProductsSort products={products} setProducts={setProducts} />
@@ -43,12 +43,12 @@ const Dashboard = ({products, setProducts, filter, setFilter, toggleCompareMode,
                     <PaginatedPage products={products} displaySettings={company.displaySettings}>
                         <ProductList company={company} displaySettings={company.displaySettings} />
                     </PaginatedPage>
-
-                    <div className="dashboard-content-bottom">
-                        <CompareBottomBar />
-                    </div>
                 </div>
 
+            </div>
+
+            <div className="dashboard-bottom">
+                {compareMode ? <CompareBottomBar /> : ""}
             </div>
             
         </div>

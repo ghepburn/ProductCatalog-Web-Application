@@ -17,6 +17,11 @@ class Filter {
     remove = (attribute, value) => {
         const index = this.restrictions[attribute].indexOf(value);
         this.restrictions[attribute].splice(index, 1);
+
+        //remove entire row if its empty, this helps w execution
+        if (this.restrictions[attribute].length === 0) {
+            delete this.restrictions[attribute];
+        }
     }
 
     clear = () => {
@@ -25,6 +30,7 @@ class Filter {
 
     //run filter on input array
     execute = (items) => {
+        console.log("EXECUTING FILTER");
         this.createMapping(items);
         if (!Object.keys(this.restrictions).length) {
             return items;

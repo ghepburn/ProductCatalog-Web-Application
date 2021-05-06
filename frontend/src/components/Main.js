@@ -32,7 +32,7 @@ const Main = ({siteSettings, displaySettings, setSettings, client}) => {
             base: `/${name}`,
             admin: `/${name}/admin`,
             dashboard: `/${name}/products`,
-            product: `/${name}/products/product/:productId`,
+            product: `/${name}/products/product/`,
             compare: `/${name}/products/compare`
         }
         company.image = "http://via.placeholder.com/640x360";
