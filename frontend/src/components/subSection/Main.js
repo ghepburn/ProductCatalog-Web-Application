@@ -8,6 +8,7 @@ import Landing from "./landing/Landing";
 import Dashboard from "./dashboard/Dashboard";
 import ProductView from "./dashboard//productView/ProductView";
 import ProductCompareView from './dashboard/functionality/compare/ProductCompareView';
+import Nav from "./navbar/Nav";
 
 
 const Main = ({match, company, client}) => {
@@ -15,6 +16,7 @@ const Main = ({match, company, client}) => {
     return (  
         <div className="sub-section">
             <SubSectionState client={client}>
+                <Nav company={company} />
                 <Switch>
                     <Route exact path={`${company.routes.admin}`} component={() => <Admin  company={company} client={client} />} />
                     <Route exact path={`${company.routes.product}:productId`} component={() => <ProductView  company={company} />} />

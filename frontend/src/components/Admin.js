@@ -1,29 +1,29 @@
 import React from 'react';
 import InputForm from "./utils/forms/InputForm";
 
-import withSiteSettingsContext from "./globalState/stateDecorators/withSiteSettingsContext";
 import TitlePhoto from './views/TitlePhoto';
+import withSettingsContext from './globalState/stateDecorators/withSettingsContext';
 
-const Admin = ({client, setSiteSettings, siteSettings}) => {
+const Admin = ({client, setSettings, settings}) => {
 
-    const changeSiteSettings = async (updatedSiteSettings) => {
+    const changeSettings = async (updatedSettings) => {
 
         // persist changes
-        await client.postSiteSettings(updatedSiteSettings);
+        await client.postSettings(updatedSettings);
 
         // update state
-        setSiteSettings(updatedSiteSettings);
+        setSettings(updatedSettings);
         
-        return updatedSiteSettings;
+        return updatedSettings;
     }
 
     const inputForms = [
-        <InputForm content={siteSettings} onChange={changeSiteSettings} />
+        <InputForm content={settings} onChange={changeSettings} />
     ]
 
     return (  
         <div className="admin">
-            <TitlePhoto />
+            <TitlePhoto image={settings.images.admin}/>
             <div className="admin-content">
                 {inputForms}
             </div>
@@ -31,4 +31,4 @@ const Admin = ({client, setSiteSettings, siteSettings}) => {
     );
 }
  
-export default withSiteSettingsContext(Admin);
+export default withSettingsContext(Admin);

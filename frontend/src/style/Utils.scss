@@ -13,13 +13,17 @@
 // IMAGE SLIDER
 .image-slider {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.image-slider-secondary {
+    width: 20%;
+    display: flex;
     flex-direction: row;
 }
-.image-slider-left {
-    width: 20%;
-}
 
-.image-slider-right {
+.image-slider-primary {
     width: 80%;
     flex-direction: row;
     display: flex;

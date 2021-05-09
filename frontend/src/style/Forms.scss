@@ -8,16 +8,16 @@
 .form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    margin: auto;
 }
 
-// .form-row {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: center;
-//     padding-left: 3%;
-//     padding-right: 3%;
-// }
+.form-row {
+    display: flex;
+    flex-direction: row;
+    // justify-content: center;
+    // padding-left: 3%;
+    // padding-right: 3%;
+}
 
 // .form-key {
 //     display: flex;

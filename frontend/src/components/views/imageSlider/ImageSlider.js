@@ -28,13 +28,13 @@ const ImageSlider = ({images}) => {
 
     return (  
         <div className="image-slider">
-            <div className="image-slider-left">
-                {secondaryImageSlider}
-            </div>
-            <div className="image-slider-right">
+            <div className="image-slider-primary">
                 <StandardButton onClick={back} text="<" addClassName={"image-slider-button"} />
                 <img src={imageSlider.current()} />
                 <StandardButton onClick={slide} text=">" addClassName={"image-slider-button"} />
+            </div>
+            <div className="image-slider-secondary">
+                {secondaryImageSlider}
             </div>
 
         </div>

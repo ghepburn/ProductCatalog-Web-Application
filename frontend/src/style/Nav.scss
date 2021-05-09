@@ -1,10 +1,31 @@
-
+@import 'Variables';
 
 .nav {
     font-size: 60%;
     font-weight: bold;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    background-color: $nav-background-colour;
+    height: 100px;
+    border-bottom: 2px solid whitesmoke;
+}
+
+.nav-title {
+    font-size: 150%;
+    letter-spacing: 2px;
+    font-weight: lighter;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10px;
+    width: 30%;
+}
+
+.nav-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .navItem {

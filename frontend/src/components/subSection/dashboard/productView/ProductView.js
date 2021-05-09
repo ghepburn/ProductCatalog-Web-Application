@@ -30,16 +30,16 @@ const ProductView = ({products, match, company}) => {
                 <ImageSlider images={images} />
             </div>
             <div className="product-view-secondary">
-                <div className="product-view-product-title">
+                <div className="product-view-item product-view-product-title">
                     {product.name}
                 </div>
-                <div className="product-view-product-description">
+                <div className="product-view-item product-view-product-description">
                     {product.description}
                 </div>
-                <div className="product-view-product-id">
+                <div className="product-view-item product-view-product-id">
                     {product.id}
                 </div>
-                <div className="product-view-add-to-cart-button">
+                <div className="product-view-item product-view-add-to-cart-button">
                     <StandardButton onClick={()=>{}} text="ADD TO CART" />
                 </div>
             </div>

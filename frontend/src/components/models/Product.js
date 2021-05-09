@@ -1,16 +1,11 @@
-export default class Product {
-    
+import BaseModel from "./BaseModel";
 
-    constructor(id, data) {
-        this.id = id;
-        for (let key of Object.keys(data)) {
-            this[key] = data[key];
-        }
-    }
+export default class Product extends BaseModel {
 
-    equals(anotherProduct) {
-        console.log("ID: " + this.id + anotherProduct.id);
-        return this.id === anotherProduct.id;
-    }
+    name = "default";
+    images = [
+        "https://homepages.cae.wisc.edu/~ece533/images/airplane.png", 
+        "https://homepages.cae.wisc.edu/~ece533/images/girl.png"
+    ];
      
 }
