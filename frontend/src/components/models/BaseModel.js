@@ -1,7 +1,9 @@
 class BaseModel {
     
     constructor(item) {
-        this.acceptObjectAttributes(item);
+        if (item) {
+            this.acceptObjectAttributes(item);
+        }
     }
 
     acceptObjectAttributes(objectItem) {
@@ -21,3 +23,5 @@ class BaseModel {
     }
 
 }
+
+export default BaseModel;

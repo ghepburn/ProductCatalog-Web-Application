@@ -23,6 +23,11 @@ class Integrater {
     constructor(client) {
         this.client = client;
 
+        this.hasIntegratedProducts = false;
+        this.hasIntegratedCompanies = false;
+        this.hasIntegratedSettings = false;
+        this.hasIntegratedCompanySettings = false;
+
         this.productValidator = new ProductValidator();
         this.ProductTransformer = new ProductTransformer();
         this.productLoader = new ProductLoader();
@@ -45,6 +50,9 @@ class Integrater {
         let validatedProducts = this.productValidator.validate(products);
         let transformedProducts = this.ProductTransformer.transform(validatedProducts);
         let loadedProducts = this.productLoader.load(transformedProducts);
+
+        this.hasIntegratedProducts = true;
+
         return loadedProducts;
     }
 
@@ -57,7 +65,18 @@ class Integrater {
         let validatedCompanies = this.companyValidator.validate(companies);
         let transformedCompanies = this.companyTransformer.transform(validatedCompanies);
         let loadedCompanies = this.companyLoader.load(transformedCompanies);
-        return companies;
+
+        this.hasIntegratedCompanies = true;
+
+        return loadedCompanies;
+    }
+
+    getDefaultCompanies() {
+        let companies = this.client.getDefaultCompanies();
+        let validatedCompanies = this.companyValidator.validate(companies);
+        let transformedCompanies = this.companyTransformer.transform(validatedCompanies);
+        let loadedCompanies = this.companyLoader.load(transformedCompanies);
+        return loadedCompanies;
     }
 
     setCompanies(companies) {
@@ -69,6 +88,12 @@ class Integrater {
         let validatedSettings = this.settingsValidator.validate(settings);
         let transformedSettings = this.settingsTransformer.transform(validatedSettings);
         let loadedSettings = this.settingsLoader.load(transformedSettings);
+
+        let companies = this.getCompanies();
+        loadedSettings.setCompanies(companies);
+
+        this.hasIntegratedSettings = true;
+
         return loadedSettings;
     }
 
@@ -77,8 +102,16 @@ class Integrater {
     }
 
     getDefaultSettings() {
-        let settings = this.client.getSettings();
-        return settings;
+        let settings = this.client.getDefaultSettings();
+        let validatedSettings = this.settingsValidator.validate(settings);
+        let transformedSettings = this.settingsTransformer.transform(validatedSettings);
+        let loadedSettings = this.settingsLoader.load(transformedSettings);
+    
+        let companies = this.getDefaultCompanies();
+    
+        loadedSettings.setCompanies(companies);
+
+        return loadedSettings;
     }
 
     getCompanySettings() {
@@ -86,6 +119,9 @@ class Integrater {
         let validatedCompanySettings = this.companySettingsValidator.validate(companySettings);
         let transformedCompanySettings = this.companySettingsTransformer.transform(validatedCompanySettings);
         let loadedCompanySettings = this.companySettingsLoader.load(transformedCompanySettings);
+
+        this.hasIntegratedCompanySettings = true;
+
         return loadedCompanySettings;
 
     }

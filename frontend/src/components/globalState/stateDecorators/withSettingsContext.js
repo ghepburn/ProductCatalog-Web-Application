@@ -9,7 +9,7 @@ const withSettingsContext = (WrappedComponent) => {
         // const setCompanyDisplaySettings = displaySettingsContext.setCompanyDisplaySettings;
 
         return (
-            <WrappedComponent {...props} settings={settingsContext.settings} setSettings={settingsContext.setSettings} client={settingsContext.client}/>
+            <WrappedComponent {...props} settings={settingsContext.settings} setSettings={settingsContext.setSettings} integrater={settingsContext.integrater}/>
         );
     }
 }

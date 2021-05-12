@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Integrater from "../components/integration/Integrater";
-
 import Admin from "./Admin";
 import SubSectionMain from "./subSection/Main";
 
@@ -12,10 +10,13 @@ const Main = ({settings, setSettings, integrater}) => {
 
     console.log("MAIN");
     console.log(settings);
+    console.log(integrater);
     
     if (!integrater.hasIntegratedSettings) {
-        let updatedSettings = integrater.getSettings();
-        setSettings(updatedSettings);
+        // let updatedSettings = integrater.getSettings();
+        // let companies = integrater.getCompanies();
+        // updatedSettings.companies = companies;
+        // setSettings(updatedSettings);
     }
 
     //ROUTES

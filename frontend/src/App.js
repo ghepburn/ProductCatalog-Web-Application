@@ -11,10 +11,11 @@ function App() {
   //customer specific parameters
   let client = new Client();
   let integrater = new Integrater(client);
+  let defaultSettings = integrater.getDefaultSettings();
 
   return (
     <div className="app">
-      <GlobalState integrater={integrater} >
+      <GlobalState integrater={integrater} defaultSettings={defaultSettings}>
         <Main />
       </GlobalState>
     </div>

@@ -2,8 +2,17 @@ import BaseModel from "./BaseModel";
 
 class Settings extends BaseModel {
 
-        companies = [];
-        routes = [];
+        constructor(item) {
+                super(item);
+                this.companies = this.companies ? this.companies : [];
+                this.routes = this.routes ? this.routes : [];
+        }
+
+        setCompanies(companies) {
+                companies.map((company)=>{
+                        this.companies.push(company);
+                })
+        }
 
 }
 

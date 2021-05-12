@@ -1,7 +1,5 @@
 class Routes {
 
-    name = "default";
-
     constructor(name) {
         this.name = name;
         this.base = `/${name}`;

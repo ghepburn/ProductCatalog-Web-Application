@@ -6,13 +6,11 @@ import CompanySettings from "./CompanySettings";
 
 class Company extends BaseModel{
 
-    name = "default";
-    routes = new Routes();
-    images = new Images();
-    settings = new CompanySettings();
-
-    constructor() {
-        super();
+    constructor(item) {
+        super(item);
+        this.name = this.name ? this.name : "default";
+        this.images = this.images ? this.images : new Images();
+        this.settings = this.settings ? this.settings : new CompanySettings();
         this.routes = new Routes(this.name);
     }
     

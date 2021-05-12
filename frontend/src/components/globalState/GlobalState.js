@@ -13,7 +13,7 @@ class GlobalState extends Component {
         super(props);
 
         this.state = {  
-            settings: props.integrater.getDefaultSettings(),
+            settings: props.defaultSettings,
             integrater: props.integrater
         }
     }
@@ -26,7 +26,7 @@ class GlobalState extends Component {
         
     render() { 
         return ( 
-            <SettingsContext.Provider value={{settings: this.state.settings, setSettings: this.setSettings, client: this.state.client}}>
+            <SettingsContext.Provider value={{settings: this.state.settings, setSettings: this.setSettings, integrater: this.state.integrater}}>
                 {this.props.children}
             </SettingsContext.Provider >
         );

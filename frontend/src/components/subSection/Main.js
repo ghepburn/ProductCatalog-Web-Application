@@ -13,6 +13,8 @@ import Nav from "./navbar/Nav";
 
 const Main = ({match, company, client}) => {
 
+    console.log("SUB SECTRION");
+
     return (  
         <div className="sub-section">
             <SubSectionState client={client}>

@@ -1,10 +1,11 @@
 class Transformer {
 
     transform(item) {
+
         switch(typeof item) {
-            case ("Object"):
-                return this.transformedObject(item);
-            case ("Array"):
+            case ("object"):
+                return this.transformObject(item);
+            case ("array"):
                 return this.transformArray(item);
             default:
                 return this.transformItem(item);
@@ -13,15 +14,18 @@ class Transformer {
 
     transformArray(itemsArray) {
         let transformedItems = itemsArray.map((item)=>{
-            return this.transform(item);
+            return this.transformItem(item);
         });
 
         return transformedItems;
     }
 
     transformObject(itemObject) {
+        if (!Object.keys(itemObject).length) {
+            return this.transformItem({});
+        }
         let transformedObject = Object.keys(itemObject).map((key)=>{
-            return this.transform(itemObject[key]);
+            return this.transformItem(itemObject[key]);
         });
 
         return transformedObject;
@@ -32,3 +36,5 @@ class Transformer {
     }
 
 }
+
+export default Transformer;

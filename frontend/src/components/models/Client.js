@@ -40,18 +40,31 @@ class Client extends BaseClient {
         return companies;
     }
 
+    getDefaultCompanies() {
+        let companies = [
+            {"name": "Walmart"},
+            {"name": "Costco"}
+        ];
+        return companies;
+    }
+
     getProducts() {
         let products = productData;
         return products;
     }
 
     getSettings() {
-        let settings = new Settings();
-        return settings;
+        let defaultSettings = {};
+        return defaultSettings;
+    }
+
+    getDefaultSettings() {
+        let defaultSettings = {};
+        return defaultSettings;
     }
 
     getCompanySettings() {
-        let companySettings = new CompanySettings();
+        let companySettings = {};
         return companySettings;
     }
 }
