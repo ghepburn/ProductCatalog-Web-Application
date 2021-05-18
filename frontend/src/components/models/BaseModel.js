@@ -19,6 +19,9 @@ class BaseModel {
                 return false;
             }
         })
+        console.log("ISEQUAL");
+        console.log(this);
+        console.log(anotherItem);
         return true;
     }
 

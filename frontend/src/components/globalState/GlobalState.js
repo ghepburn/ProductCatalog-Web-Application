@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 
 // import global contexts
-import Settings from "../models/Settings";
 import SettingsContext from "./settings/SettingsContext";
-
-import Client from "../models/Client";
 
 
 class GlobalState extends Component {

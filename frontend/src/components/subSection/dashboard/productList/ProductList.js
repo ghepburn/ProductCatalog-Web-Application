@@ -8,7 +8,7 @@ import Row from "./Row";
  *  
  * @returns 
  */
-const ProductList = ({company, displaySettings, products}) => {
+const ProductList = ({company, settings, products}) => {
 
     if (!products.length) {
         return "No Products Available";
@@ -18,7 +18,7 @@ const ProductList = ({company, displaySettings, products}) => {
 
         let productItems = row.map((item) => {
             return(
-                <ProductListItem company={company} product={item} displaySettings={displaySettings} />
+                <ProductListItem company={company} product={item} settings={settings} />
             );
         });
 

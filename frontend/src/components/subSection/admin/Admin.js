@@ -1,28 +1,29 @@
 import React from 'react';
-import withDisplaySettingsContext from "../../globalState/stateDecorators/withDisplaySettingsContext";
+import withSettingsContext from "../../globalState/stateDecorators/withSettingsContext";
 import InputForm from "../../utils/forms/InputForm";
 import TitlePhoto from '../../views/TitlePhoto';
 
-const Admin = ({company, client, setCompanyDisplaySettings}) => {
+const Admin = ({company, integrater}) => {
 
-    const saveDisplaySettings = async (updatedDisplaySettings) => {
-        console.log("SAVE SETTINGS");
+    const saveCompanySettings = async (updatedCompanySettings) => {
+        console.log("SAVE COMPANY SETTINGS");
 
         //persist
-        const newDisplaySettings = await client.setCompanyDisplaySettings(updatedDisplaySettings);
-        console.log(newDisplaySettings);
-        // change state
-        setCompanyDisplaySettings(updatedDisplaySettings);
+        // const newCompanySettings = await integrater.setCompanySettings(updatedCompanySettings);
+        // console.log(newCompanySettings);
+        // // change state
+        // company.settings = newCompanySettings;
+        // setCompanySettings(company);
     }
 
     return (  
         <div className="admin">
-            <TitlePhoto image={company.image} />
+            <TitlePhoto image={company.images.admin} />
             <div className="admin-content">
-                <InputForm content={company.displaySettings} onChange={saveDisplaySettings} />
+                <InputForm content={company.settings} onChange={saveCompanySettings} />
             </div>
         </div>
     );
 }
  
-export default withDisplaySettingsContext(Admin);
+export default withSettingsContext(Admin);

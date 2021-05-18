@@ -11,19 +11,19 @@ import ProductCompareView from './dashboard/functionality/compare/ProductCompare
 import Nav from "./navbar/Nav";
 
 
-const Main = ({match, company, client}) => {
+const Main = ({match, company, integrater}) => {
 
     console.log("SUB SECTRION");
 
     return (  
         <div className="sub-section">
-            <SubSectionState client={client}>
+            <SubSectionState integrater={integrater}>
                 <Nav company={company} />
                 <Switch>
-                    <Route exact path={`${company.routes.admin}`} component={() => <Admin  company={company} client={client} />} />
+                    <Route exact path={`${company.routes.admin}`} component={() => <Admin  company={company} integrater={integrater} />} />
                     <Route exact path={`${company.routes.product}:productId`} component={() => <ProductView  company={company} />} />
                     <Route exact path={`${company.routes.compare}`} component={() => <ProductCompareView />} />
-                    <Route exact path={`${company.routes.dashboard}`} component={() => <Dashboard  company={company} client={client} />} />
+                    <Route exact path={`${company.routes.dashboard}`} component={() => <Dashboard  company={company} integrater={integrater} />} />
                     <Route path={`${company.routes.base}`} component={() => <Landing  company={company} />} />
                 </Switch>
             </SubSectionState>

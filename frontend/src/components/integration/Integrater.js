@@ -48,6 +48,8 @@ class Integrater {
     getProducts() {
         let products = this.client.getProducts();
         let validatedProducts = this.productValidator.validate(products);
+        console.log("VALIdATE DPRODUCTS");
+        console.log(validatedProducts);
         let transformedProducts = this.ProductTransformer.transform(validatedProducts);
         let loadedProducts = this.productLoader.load(transformedProducts);
 

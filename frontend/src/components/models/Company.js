@@ -1,7 +1,7 @@
 import BaseModel from "./BaseModel";
 
 import Routes from "./Routes";
-import Images from "./Images";
+import Images from "./CompanyImages";
 import CompanySettings from "./CompanySettings";
 
 class Company extends BaseModel{

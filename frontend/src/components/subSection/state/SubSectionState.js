@@ -8,23 +8,23 @@ class SubSectionState extends React.Component {
 
     constructor(props) {
         super(props);
-        const client = props.client;
+        const integrater = props.integrater;
         let products = [];
 
         this.state = {
             products: products,
             filter: new Filter(),
             initiallProducts: products,
-            client: client,
+            integrater: props.integrater,
             selectedProducts: [],
             compareMode: false
         }
     }
 
     componentDidMount = async () => {
-        if (!this.state.client.hasFetchedProducts) {
+        if (!this.state.integrater.hasIntegratedProducts) {
             const getProducts = async () => {
-                const updatedProducts = await this.state.client.getProducts(); 
+                const updatedProducts = await this.state.integrater.getProducts(); 
                 return updatedProducts;            
             } 
             const updatedProducts = await getProducts();
@@ -65,24 +65,22 @@ class SubSectionState extends React.Component {
    }
 
     selectProduct = (product) => {
-        let updatedSelectedProducts = this.state.selectedProducts;
-
-        //check if it exists already
-        let found = false;
-        for (let i = 0; i < updatedSelectedProducts.length; i++) {
-            let nextProduct = updatedSelectedProducts[i];
-            if (nextProduct.equals(product)) {
-                found = true;
-                updatedSelectedProducts.splice(i, 1);
-            } 
+        console.log("se;ect product");
+        let products = this.getProducts();
+        for (let i = 0; i < products.length; i++) {
+            if (product.equals(products[i])) {
+                products[i].selected = !products[i].selected
+            }
         }
-        if (!found) {
-            updatedSelectedProducts.push(product);
-        }
-        this.setState({selectedProducts: updatedSelectedProducts});
+        this.setProducts(products);
+    }
 
-        product.selected = !product.selected;
-        return product;
+    getSelectedProducts = () => {
+        let products = this.state.products;
+        let selectedProducts = products.filter((product)=> {
+            return product.selected;
+        });
+        return selectedProducts;
     }
 
    toggleCompareMode = () => {
@@ -96,7 +94,7 @@ class SubSectionState extends React.Component {
     render() { 
         return ( 
             <ProductsContext.Provider value={{products: this.getProducts(), setProducts: this.setProducts, filter: this.state.filter, setFilter: this.setFilter}} >
-                <ProductCompareContext.Provider value={{selectedProducts: this.state.selectedProducts, selectProduct: this.selectProduct, toggleCompareMode: this.toggleCompareMode, compareMode: this.state.compareMode}}>    
+                <ProductCompareContext.Provider value={{selectedProducts: this.getSelectedProducts(), selectProduct: this.selectProduct, toggleCompareMode: this.toggleCompareMode, compareMode: this.state.compareMode}}>    
                     {this.props.children}
                 </ProductCompareContext.Provider>
             </ProductsContext.Provider>

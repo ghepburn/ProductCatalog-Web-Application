@@ -3,7 +3,7 @@ import BaseModel from "./BaseModel";
 class CompanySettings extends BaseModel {
 
     //default settings here
-    productsPerRow = 3;
+    productsPerRow = 4;
     productsPerRowMedium = 2;
     productsPerRowMobile = 1;
     productRowsPerPage = 10;

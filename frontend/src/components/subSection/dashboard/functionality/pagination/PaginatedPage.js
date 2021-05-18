@@ -6,16 +6,16 @@ import MiniButton from '../../../../utils/buttons/MiniButton';
  * 
  * @param {array} products
  * @param {array} children
- * @param {object} displaySettings
+ * @param {object} settings
  *  
  * @returns Context of pages -- ex: Pages = [[prod1, prod2, prod3], [prod1, prod2, prod3]]
  */
-const PaginatedPage = ({products, children, displaySettings}) => {
+const PaginatedPage = ({products, children, settings}) => {
 
     let paginatedProducts = [];
 
-    const rowsPerPage = displaySettings.getRowsPerPage();
-    const productsPerRow = displaySettings.getItemsPerRow();
+    const rowsPerPage = settings.getRowsPerPage();
+    const productsPerRow = settings.getItemsPerRow();
     const numberOfProducts = products.length;
     const numberOfRows = Math.ceil(numberOfProducts/productsPerRow);
     const numberOfPages = Math.ceil(numberOfRows/rowsPerPage);

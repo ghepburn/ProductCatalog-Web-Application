@@ -15,12 +15,12 @@ import withProductsContext from "../state/stateDecorators/withProductsContext";
 
 const Dashboard = ({products, setProducts, filter, setFilter, toggleCompareMode, company, compareMode}) => {
     console.log("DASHBOARD");
-    console.log(company);
+    console.log(products);
     return (   
         <div className="dashboard">
 
             <div className="dashboard-title">
-                <TitlePhoto image={company.image} />
+                <TitlePhoto image={company.images.dashboard} />
             </div>
 
             <div className="dashboard-content">
@@ -40,8 +40,8 @@ const Dashboard = ({products, setProducts, filter, setFilter, toggleCompareMode,
                         </div>
                     </div>
 
-                    <PaginatedPage products={products} displaySettings={company.displaySettings}>
-                        <ProductList company={company} displaySettings={company.displaySettings} />
+                    <PaginatedPage products={products} settings={company.settings}>
+                        <ProductList company={company} settings={company.settings} />
                     </PaginatedPage>
                 </div>
 

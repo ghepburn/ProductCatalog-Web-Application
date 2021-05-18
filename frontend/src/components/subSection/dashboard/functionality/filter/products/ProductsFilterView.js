@@ -6,7 +6,7 @@ const FilterView = ({products, filter, onUpdate, onClear}) => {
     const filterMap = filter.mapping;
 
     const filterView = Object.keys(filterMap).map((key)=>{
-        let attribute = key;
+        let attribute = key.toUpperCase();
         let attributeOptions = filterMap[key];
         
         const onClick = (name, value) => {

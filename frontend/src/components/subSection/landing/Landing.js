@@ -3,15 +3,13 @@ import { withRouter } from "react-router-dom";
 
 import TitlePhoto from "../../views/TitlePhoto";
 
-import withDisplaySettings from "../../globalState/stateDecorators/withDisplaySettingsContext";
-
 const Landing = ({history, company}) => {
-
-    console.log(company.displaySettings);
+    console.log("LANDING");
+    console.log(company);
 
     return (  
         <div className="landing">
-            <TitlePhoto image={company.image} />
+            <TitlePhoto image={company.images.landing} />
             <div className="landing-content">
                 <button className="landing-button standard-button" onClick={() => {history.push(company.routes.dashboard)}}>Products</button>
             </div>
@@ -19,4 +17,4 @@ const Landing = ({history, company}) => {
     );
 }
  
-export default withDisplaySettings(withRouter(Landing));
+export default withRouter(Landing);
