@@ -3,15 +3,16 @@ import { withRouter, useRouteMatch } from "react-router-dom";
 import withProductCompareContext from "../../state/stateDecorators/withProductCompareContext";
 
 const ProductListItem = ({company, product, settings, selectProduct, compareMode, history}) => {
-    let match = useRouteMatch();
-    
-    let productClassName = ""; //= settings.productBackgroundColour;
+    console.log("LIST ITEM HERE");
+    console.log(product);
 
+    //redirect to individual product
     let outerClick = () => {
         history.push(company.routes.product + product.id);
     }
 
     //account for compareMode
+    let productClassName = "";
     if (compareMode) {
         productClassName = product.selected ? "selected-product" : "unselected-product";
         outerClick = () => {
@@ -23,7 +24,13 @@ const ProductListItem = ({company, product, settings, selectProduct, compareMode
 
     return (  
         <div className={`product-list-item ${productClassName}`} onClick={outerClick} >
-            <button onClick={()=>{console.log("CLICKED")}}>{product.name}</button>
+            <div className="product-list-item-primary">
+                <img className="proudct-list-item-image" src={product.images[0]} />    
+            </div>
+            <div className="product-list-item-secondary">
+                <div className="product-list-item-name">{product.name}</div>
+                <div className="product-list-description">{product.desc}</div>
+            </div>
         </div>
     );
 }

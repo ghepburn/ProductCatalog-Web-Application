@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductListItem from "./ProductListItem";
+import NullProductListItem from "./NullProductListItem";
 import Row from "./Row";
 
 /**
@@ -17,6 +18,11 @@ const ProductList = ({company, settings, products}) => {
     let productsList = products.map((row) => {
 
         let productItems = row.map((item) => {
+            if (!item.id) {
+                return(
+                    <NullProductListItem product={item} />
+                );
+            }
             return(
                 <ProductListItem company={company} product={item} settings={settings} />
             );

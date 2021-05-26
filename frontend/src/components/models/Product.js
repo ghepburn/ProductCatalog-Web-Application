@@ -1,6 +1,7 @@
 import BaseModel from "./BaseModel";
 
 export default class Product extends BaseModel {
+    internalFields = ["internalFields", "id", "images", "selected"];
 
     constructor(item) {
         super(item);

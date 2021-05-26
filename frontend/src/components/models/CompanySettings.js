@@ -3,12 +3,12 @@ import BaseModel from "./BaseModel";
 class CompanySettings extends BaseModel {
 
     //default settings here
-    productsPerRow = 4;
+    productsPerRow = 3;
     productsPerRowMedium = 2;
     productsPerRowMobile = 1;
-    productRowsPerPage = 10;
-    produtRowsPerPageMedium = 8;
-    productRowsPerPageMobile = 5;
+    productRowsPerPage = 8;
+    produtRowsPerPageMedium = 6;
+    productRowsPerPageMobile = 4;
 
     getItemsPerRow() {
         const screenWidth = this.getScreenWidth();
