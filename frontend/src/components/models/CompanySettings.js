@@ -12,9 +12,9 @@ class CompanySettings extends BaseModel {
 
     getItemsPerRow() {
         const screenWidth = this.getScreenWidth();
-        if (screenWidth > 1000) {
+        if (screenWidth > 1500) {
             return this.productsPerRow;
-        } else if (screenWidth > 600) {
+        } else if (screenWidth > 1000) {
             return this.productsPerRowMedium;
         } else {
             return this.productsPerRowMobile;
@@ -23,7 +23,7 @@ class CompanySettings extends BaseModel {
 
     getRowsPerPage() {
         const screenWidth = this.getScreenWidth();
-        if (screenWidth > 600) {
+        if (screenWidth > 1500) {
             return this.productRowsPerPage;
         } else {
             return this.productRowsPerPageMobile;

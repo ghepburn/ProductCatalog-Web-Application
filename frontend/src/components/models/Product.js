@@ -13,6 +13,8 @@ export default class Product extends BaseModel {
         ];
         this.description = this.description ? this.description : "";
         this.selected = false;
+        
+        this.internalFields = ["internalFields", "id", "images", "selected"];
     }
      
 }

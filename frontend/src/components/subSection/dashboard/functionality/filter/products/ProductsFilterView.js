@@ -3,17 +3,15 @@ import BooleanForm from '../../../../../utils/forms/BooleanForm';
 
 const FilterView = ({products, filter, onUpdate, onClear}) => {
 
-    const filterMap = filter.mapping;
-
-    const filterView = Object.keys(filterMap).map((key)=>{
-        let attribute = key.toUpperCase();
-        let attributeOptions = filterMap[key];
+    const filterView = Object.keys(filter.mapping).map((field)=>{
+    
+        let fieldValues = filter.mapping[field];
         
         const onClick = (name, value) => {
-            onUpdate(attribute, name);
+            onUpdate(field, name);
         }
         return(
-            <BooleanForm item={attribute} itemOptions={attributeOptions} onClick={onClick} />
+            <div className="filter-section"><BooleanForm item={field} itemOptions={fieldValues} onClick={onClick} /></div>
         );
     });
     

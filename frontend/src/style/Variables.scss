@@ -1,6 +1,6 @@
 // media
-$mobileScreenWidthMax: 800px;
-$mediumScreenWidthMax: 1000px;
+$mobileScreenWidthMax: 1000px;
+$mediumScreenWidthMax: 1500px;
 
 // colors
 $main-background-color: white;
@@ -12,6 +12,9 @@ $nav-background-colour: white;
 $selected-product-background-colour: #e5e2e2;
 $unselected-product-background-colour: #f8f6f6;
 $compare-bar-background-colour: lightgray;
+
+$filter-background-colour: rgb(213, 223, 233);
+$filter-border-colour: rgb(196, 191, 191);
 
 //sizes
 $default-font-size: calc(10px + 2vmin);

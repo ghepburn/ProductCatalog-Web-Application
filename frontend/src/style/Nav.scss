@@ -34,3 +34,11 @@
     margin-left: 5%;
     margin-right: 5%;
 }
+
+//MEDIUM SCREEN & MOBILE
+@media screen and (max-width: $mediumScreenWidthMax) {
+    .nav-title {
+        width: 100%;
+        justify-content: center;
+    }
+}

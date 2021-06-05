@@ -41,10 +41,22 @@ class SubSectionState extends React.Component {
         return updatedFilter;
     }
 
-    //Applys filter
+    /**
+     * Applies filter to products before returning
+     * 
+     * Products internalFields will not be used in filter
+     * 
+     * @returns Array<Product> products 
+     */
     getProducts = () => {
+
         let products = this.state.products;
+        if (!products.length) {
+            return products
+        }
+
         let filter = this.state.filter;
+        filter.fieldsToIgnore = products[0].internalFields;
         let filteredProducts = [];
         if (products.length) {
             filteredProducts = filter.execute(products);

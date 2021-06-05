@@ -10,6 +10,12 @@
     margin-right: 2%;
 }
 
+// TITLE PHOTO
+.title-photo {
+    height: 50vh;
+    object-fit: contain;
+}
+
 // IMAGE SLIDER
 .image-slider {
     display: flex;
@@ -43,4 +49,17 @@
     padding: 4%;
     border-radius: 1px 1px 1px 1px;
     border-color: lightslategray;
+}
+
+//CHECKBOX
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    padding: 1%;
+}
+
+.checkbox-label {
+    max-width: 100%;
+    overflow: none;
 }

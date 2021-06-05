@@ -7,9 +7,9 @@ const Nav = ({company, history}) => {
             <div className="nav-title">
                 DESIGN INNOVATIONS
             </div>
-            <div classname="nav-content">
+            {/* <div classname="nav-content">
                 
-            </div>
+            </div> */}
         </div>
     );
 }
