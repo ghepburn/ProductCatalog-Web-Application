@@ -3,8 +3,6 @@ import { withRouter, useRouteMatch } from "react-router-dom";
 import withProductCompareContext from "../../state/stateDecorators/withProductCompareContext";
 
 const ProductListItem = ({company, product, settings, selectProduct, compareMode, history}) => {
-    console.log("LIST ITEM HERE");
-    console.log(product);
 
     //redirect to individual product
     let outerClick = () => {

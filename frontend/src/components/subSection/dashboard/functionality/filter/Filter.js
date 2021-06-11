@@ -38,9 +38,7 @@ class Filter {
      * 
      */
     execute = (items) => {
-        console.log("FILTER EXECUTING");
         let mapping = this.createMapping(items);
-        console.log(mapping);
         mapping = this.applyRestrictions(mapping);
 
         //No restrictions means all items are valid
@@ -84,7 +82,6 @@ class Filter {
      * @returns 
      */
     createMapping = (items) => {
-        console.log("CREATE MAPPING");
         let filter = {};
         let attributes = [];
 
@@ -131,8 +128,6 @@ class Filter {
      * @param {*} filter 
      */
     applyRestrictions = (filter) => {
-
-        console.log(this.restrictions);
     
         for (let restriction of Object.keys(this.restrictions)) {
 

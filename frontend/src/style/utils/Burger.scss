@@ -1,0 +1,31 @@
+@import "../Variables";
+
+//BURGER
+.burger {
+    border: solid $button-border-color;
+    width: 50px;
+    height: 35px;
+    padding: 4px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    transition: all .5s ease-in-out;
+    display: none;
+}
+
+.burger:hover {
+    cursor: pointer;
+}
+
+.burger-line {
+    background: $button-border-color;
+    height: 2px;
+    border-radius: 5px;
+}
+
+//MOBILE SCREEN
+@media screen and (max-width: $mobileScreenWidthMax) {
+    .burger{
+        display: flex;
+    }
+}

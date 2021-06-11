@@ -77,7 +77,8 @@ class SubSectionState extends React.Component {
    }
 
     selectProduct = (product) => {
-        console.log("se;ect product");
+        console.log("SELECTING PRODUCT");
+        console.log(product);
         let products = this.getProducts();
         for (let i = 0; i < products.length; i++) {
             if (product.equals(products[i])) {

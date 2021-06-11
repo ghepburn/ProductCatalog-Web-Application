@@ -13,6 +13,7 @@
 .dashboard-content {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin-top: 1%;
     margin-bottom: 2%;
 }
@@ -44,6 +45,11 @@
 //MOBILE SCREEN
 @media screen and (max-width: $mobileScreenWidthMax) {
     .dashboard-content-toolbar{
+        display: none;
+        
+    }
+
+    .dashboard-content-secondary {
         display: none;
         
     }

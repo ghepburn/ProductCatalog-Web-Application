@@ -2,6 +2,7 @@ import React from 'react';
 
 import TitlePhoto from "../../views/TitlePhoto";
 import StandardButton from "../../utils/buttons/StandardButton";
+import Burger from "../../utils/Burger"; 
 
 import ProductsSort from "./functionality/sort/ProductsSort";
 import ProductsFilter from "./functionality/filter/products/ProductsFilter";

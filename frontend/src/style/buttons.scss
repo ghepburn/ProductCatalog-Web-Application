@@ -57,9 +57,13 @@
 
 
 
-// NON-MOBILE
-// -------------------------------
-@media(min-width: 900px) {
-
-
+//MOBILE SCREEN
+@media screen and (max-width: $mobileScreenWidthMax) {
+    .mini-standard-button{
+        font-size: 80%;
+        padding-left: 3%;
+        padding-right: 3%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
 }

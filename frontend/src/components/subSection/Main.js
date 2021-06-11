@@ -9,11 +9,10 @@ import Dashboard from "./dashboard/Dashboard";
 import ProductView from "./dashboard//productView/ProductView";
 import ProductCompareView from './dashboard/functionality/compare/ProductCompareView';
 import Nav from "./navbar/Nav";
+import BottomNav from "./navbar/BottomNav";
 
 
 const Main = ({match, company, integrater}) => {
-
-    console.log("SUB SECTRION");
 
     return (  
         <div className="sub-section">
@@ -26,6 +25,7 @@ const Main = ({match, company, integrater}) => {
                     <Route exact path={`${company.routes.dashboard}`} component={() => <Dashboard  company={company} integrater={integrater} />} />
                     <Route path={`${company.routes.base}`} component={() => <Landing  company={company} />} />
                 </Switch>
+                <BottomNav />
             </SubSectionState>
         </div>
     );

@@ -14,15 +14,23 @@ class BaseModel {
     }
 
     equals(anotherItem) {
-        Object.keys(anotherItem).map((key)=>{
+        let isEqual = true;
+        console.log("COMPARING ITEMS: " + this + " & " + anotherItem);
+        for (let i = 0; i < Object.keys(anotherItem).length; i++) {
+
+            let key = Object.keys(anotherItem)[i];
+
+            console.log("KEY: " + key);
+            console.log(this[key]);
+            console.log(anotherItem[key]);
+            console.log(this[key] !== anotherItem[key]);
             if (!this[key] || this[key] !== anotherItem[key]) {
-                return false;
+                isEqual = false;
+                break;
             }
-        })
-        console.log("ISEQUAL");
-        console.log(this);
-        console.log(anotherItem);
-        return true;
+        }
+        console.log("ISEquAL: " + isEqual);
+        return isEqual;
     }
 
 }
